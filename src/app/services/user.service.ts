@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
@@ -6,9 +6,11 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class UserService {
 
-  constructor(private fs: AngularFirestore) { }
+  constructor(
+    @Inject('firebaseProject1') private firebaseProject1: AngularFirestore,
+  ) { }
 
   getUsers() {
-    return this.fs.collection('users').valueChanges()
+    return this.firebaseProject1.collection('users').valueChanges()
   }
 }

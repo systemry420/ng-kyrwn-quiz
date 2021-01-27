@@ -14,6 +14,11 @@ import { FormsModule } from '@angular/forms';
 import { environment } from "src/environments/environment";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
+import {
+  AngularFirestoreProject1,
+  AngularFirestoreProject2,
+} from './firebase.factory';
+import { PLATFORM_ID, NgZone, LOCALE_ID } from '@angular/core';
 
 @NgModule({
   declarations: [
@@ -29,11 +34,26 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
   imports: [
     BrowserModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    // AngularFireModule.initializeApp(environment.firebaseConfig1),
     AngularFirestoreModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'env',
+      useValue: environment
+    },
+    {
+      provide: 'firebaseProject1',
+      deps: [PLATFORM_ID, NgZone],
+      useFactory: AngularFirestoreProject1
+    },
+    {
+      provide: 'firebaseProject2',
+      deps: [PLATFORM_ID, NgZone],
+      useFactory: AngularFirestoreProject2
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

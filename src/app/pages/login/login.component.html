@@ -5,10 +5,12 @@
       <div class="form-group">
         <label for="email">Email address</label>
         <input name="email" [(ngModel)]="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+        <div class="invalid-feedback">Sorry, that username's taken. Try another?</div>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
         <input name="password" [(ngModel)]="password" type="password" class="form-control" id="password" placeholder="Password">
+        <div class="invalid-feedback">Sorry, that username's taken. Try another?</div>
       </div>
       <button type="submit" class="btn btn-success btn-block">Submit</button>
     </fieldset>
