@@ -10,6 +10,10 @@ import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NavbarComponent } from './shared/comps/navbar/navbar.component';
 import { CardComponent } from './shared/comps/card/card.component';
+import { FormsModule } from '@angular/forms';
+import { environment } from "src/environments/environment";
+import { AngularFireModule } from "@angular/fire";
+import { AngularFirestoreModule } from "@angular/fire/firestore";
 
 @NgModule({
   declarations: [
@@ -24,6 +28,9 @@ import { CardComponent } from './shared/comps/card/card.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
     AppRoutingModule
   ],
   providers: [],
