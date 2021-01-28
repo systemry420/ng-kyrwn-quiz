@@ -1,26 +1,30 @@
-<app-navbar text="Dashboard"></app-navbar>
+<app-navbar text={{quiz}}></app-navbar>
 <ng-container>
-      <div class="container" id="quiz">
-        <div class="container-header">
-            <h1 id="question">Question</h1>
-            <dl>
+      <div class="quiz">
+        <div class="quiz-header">
+            <h2 id="question">{{question[0]}}</h2>
+            <form >
+              <dl>
                 <dd>
-                    <input type="radio" name="answer" id="a" class="answer">
-                    <label for="a" id="a_text"></label>
+                  <input (change)="changeAnswer($event)" value="1" name="answer" type="radio" id="a">
+                  <label for="a">
+                    {{question[1]}}
+                  </label>
                 </dd>
                 <dd>
-                    <input type="radio" name="answer" id="b" class="answer">
-                    <label for="b" id="b_text"></label>
+                  <input (change)="changeAnswer($event)" value="2" name="answer" type="radio" id="b">
+                  <label for="b">
+                    {{question[2]}}
+                  </label>
                 </dd>
                 <dd>
-                    <input type="radio" name="answer" id="c" class="answer">
-                    <label for="c" id="c_text"></label>
+                  <input (change)="changeAnswer($event)" value="3" name="answer" type="radio" id="c">
+                  <label for="c">
+                    {{question[3]}}
+                  </label>
                 </dd>
-                <dd>
-                    <input type="radio" name="answer" id="d" class="answer">
-                    <label for="d" id="d_text"></label>
-                </dd>
-            </dl>
+              </dl>
+            </form>
         </div>
         <button id="submit">Submit</button>
     </div>

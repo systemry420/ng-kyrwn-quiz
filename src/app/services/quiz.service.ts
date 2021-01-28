@@ -14,7 +14,8 @@ export class QuizService {
     this.quiz = this.fb.collection(name)
   }
 
-  getQuiz() {
-    return this.quiz
+  getQuiz(name) {
+    // return this.quiz
+    return this.fb.collection(name)
   }
 }

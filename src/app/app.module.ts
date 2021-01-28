@@ -10,7 +10,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NavbarComponent } from './shared/comps/navbar/navbar.component';
 import { CardComponent } from './shared/comps/card/card.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { environment } from "src/environments/environment";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
@@ -36,8 +36,8 @@ import { QuizComponent } from './pages/quiz/quiz.component';
   imports: [
     BrowserModule,
     FormsModule,
-    // AngularFireModule.initializeApp(environment.firebaseConfig1),
     AngularFirestoreModule,
+    ReactiveFormsModule,
     AppRoutingModule
   ],
   providers: [
