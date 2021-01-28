@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CardComponent implements OnInit {
   @Input() content
+  @Input() quiz
   constructor() { }
 
   ngOnInit(): void {

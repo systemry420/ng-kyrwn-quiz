@@ -19,6 +19,7 @@ import {
   AngularFirestoreProject2,
 } from './firebase.factory';
 import { PLATFORM_ID, NgZone, LOCALE_ID } from '@angular/core';
+import { QuizComponent } from './pages/quiz/quiz.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { PLATFORM_ID, NgZone, LOCALE_ID } from '@angular/core';
     LoginComponent,
     DashboardComponent,
     NavbarComponent,
-    CardComponent
+    CardComponent,
+    QuizComponent
   ],
   imports: [
     BrowserModule,

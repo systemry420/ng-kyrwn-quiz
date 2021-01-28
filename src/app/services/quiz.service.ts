@@ -1,9 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuizService {
+  quiz
+  constructor(
+    @Inject('firebaseProject2') private fb: AngularFirestore,
+  ) { }
 
-  constructor() { }
+  fetchQuiz(name) {
+    this.quiz = this.fb.collection(name).valueChanges()
+  }
 }

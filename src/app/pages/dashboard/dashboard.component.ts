@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { QuizService } from 'src/app/services/quiz.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,23 +10,22 @@ import { Component, OnInit } from '@angular/core';
 export class DashboardComponent implements OnInit {
   user
   subs
-  constructor() { }
+  quiz
+  constructor(
+    private quizService: QuizService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('userData'))
     this.subs = Object.keys(this.user.subs).map(sub => {
-      return this.user.subs[sub]
+      return {'name': sub ,'content': this.user.subs[sub]}
     })
-    console.log(this.subs);
-
   }
 
-  keys() : Array<string> {
-    return Object.keys(this.subs);
+  fetchQuiz(name) {
+    this.quizService.fetchQuiz(name)
+    this.router.navigate(['quiz'])
   }
 
-}
-
-interface Subjects {
-  [ index: string ]: string
 }
