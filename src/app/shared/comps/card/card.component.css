@@ -1,0 +1,22 @@
+.app-card {
+  font-family: amiri;
+  width: 40%;
+  border-radius: 10px;
+  min-height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  font-size: 1.5em;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 0 7px 7px lightgray;
+  margin: 0.8em;
+  color: #333;
+}
+
+@media screen and (max-width: 768px) {
+  .app-card {
+    width: 90%;
+  }
+}

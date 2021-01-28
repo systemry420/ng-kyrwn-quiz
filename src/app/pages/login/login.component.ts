@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -11,25 +12,24 @@ export class LoginComponent implements OnInit {
   email: string; password: string
   users
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(
+    private userService: UserService,
+    private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit(): void {
-    this.userService.getUsers().subscribe( data => {
-      this.users = data
-      console.log(data);
 
-    })
   }
 
   onSubmit() {
-    this.users.forEach(user => {
-      if(this.email == user.id && this.password == user.password){
-        this.router.navigate(['dashboard'])
-      }
-      else {
-        console.log('error');
-      }
-    });
+    let valid = this.authService.login(this.email, this.password)
+    if(valid) {
+      this.router.navigate(['dashboard'])
+    }
+    else {
+      console.log('error');
+
+    }
   }
 
 }
