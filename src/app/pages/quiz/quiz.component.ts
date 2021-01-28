@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { QuizService } from 'src/app/services/quiz.service';
 import { FormBuilder } from "@angular/forms";
 
@@ -10,7 +10,14 @@ import { FormBuilder } from "@angular/forms";
 export class QuizComponent implements OnInit {
   quiz
   currentQuestion = 0
-  question; answer = 1
+  question; answer; score = 0
+  uncheck
+  finish: boolean
+
+  // @ViewChild('a') elA
+  // @ViewChild('b') elB
+  // @ViewChild('c') elC
+
   constructor(
     private quizService: QuizService,
     public fb: FormBuilder
@@ -18,25 +25,40 @@ export class QuizComponent implements OnInit {
 
   ngOnInit(): void {
     this.quizService.getQuiz('bt-social').valueChanges().subscribe(data=> {
-      this.quiz = data.pop()
+      this.quiz = data.pop()['data']
       console.log(this.quiz);
-      this.loadQuestion(this.quiz['data'])
+      this.loadQuestion()
     })
-
   }
 
-  loadQuestion(quiz){
-    console.log(quiz[0]);
-    this.question = quiz.pop()['ques']
-    console.log(this.question['ques']);
+  loadQuestion(){
+    if(this.quiz.length == 0) {
+      this.finish = true
+    }
+    else {
+      this.question = this.quiz.pop()['ques']
+    }
   }
 
   onSubmit() {
-    // console.log(this.quizForm.value)
+    if(this.answer == this.question[4]) {
+      this.score++
+    }
+    this.loadQuestion()
+    console.log(this.score);
+
+    this.deselect()
+  }
+
+  deselect() { // fix this shit
+    this.uncheck = false
+    // this.elA.checked = false
+    // this.elB.checked = false
+    // this.elC.checked = false
   }
 
   changeAnswer(ev) {
-    console.log(ev.target.value);
+    this.answer = ev.target.value
 
   }
 

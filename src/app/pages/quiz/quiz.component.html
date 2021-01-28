@@ -1,24 +1,24 @@
-<app-navbar text={{quiz}}></app-navbar>
-<ng-container>
+<app-navbar></app-navbar>
+<ng-container *ngIf="!finish && quiz">
       <div class="quiz">
         <div class="quiz-header">
             <h2 id="question">{{question[0]}}</h2>
             <form >
               <dl>
                 <dd>
-                  <input (change)="changeAnswer($event)" value="1" name="answer" type="radio" id="a">
+                  <input #a [checked]="uncheck" (change)="changeAnswer($event)" value="1" name="answer" type="radio" id="a">
                   <label for="a">
                     {{question[1]}}
                   </label>
                 </dd>
                 <dd>
-                  <input (change)="changeAnswer($event)" value="2" name="answer" type="radio" id="b">
+                  <input #b [checked]="uncheck" (change)="changeAnswer($event)" value="2" name="answer" type="radio" id="b">
                   <label for="b">
                     {{question[2]}}
                   </label>
                 </dd>
                 <dd>
-                  <input (change)="changeAnswer($event)" value="3" name="answer" type="radio" id="c">
+                  <input #c [checked]="uncheck" (change)="changeAnswer($event)" value="3" name="answer" type="radio" id="c">
                   <label for="c">
                     {{question[3]}}
                   </label>
@@ -26,6 +26,10 @@
               </dl>
             </form>
         </div>
-        <button id="submit">Submit</button>
+        <button id="submit" (click)="onSubmit()">Submit</button>
     </div>
+</ng-container>
+
+<ng-container *ngIf="finish">
+  <h1>You've done</h1>
 </ng-container>
