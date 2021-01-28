@@ -1,0 +1,63 @@
+.container {
+  direction: rtl;
+  max-width: 600px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  margin: 2em auto;
+  padding: 0;
+}
+
+.container-header {
+  padding: 1em;
+}
+
+.container-header h1 {
+  padding: .3em;
+}
+
+ul#list {
+  list-style-type: none;
+  padding: 0;
+}
+
+#list li {
+  margin: 1em 0;
+  font-size: 1.3em;
+  border-bottom: 1px solid lightgray;
+  padding: .5em;
+  align-items: center;
+  display: flex;
+}
+
+#list li label {
+  margin: 0 10px;
+}
+
+input[type='radio']{
+  width: 20px;
+  height: 20px;
+}
+
+button {
+  width: 100%;
+  background-color: #bada55;
+  border: none;
+  display: block;
+  cursor: pointer;
+  padding: 1em;
+  font-size: 1em;
+  font-weight: 800;
+  font-family: amiri;
+}
+
+button:hover {
+  background: #789d00;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 90%;
+  }
+}

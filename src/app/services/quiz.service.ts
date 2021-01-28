@@ -11,6 +11,10 @@ export class QuizService {
   ) { }
 
   fetchQuiz(name) {
-    this.quiz = this.fb.collection(name).valueChanges()
+    this.quiz = this.fb.collection(name)
+  }
+
+  getQuiz() {
+    return this.quiz
   }
 }
