@@ -24,6 +24,7 @@ export class DashboardComponent implements OnInit {
   }
 
   fetchQuiz(name) {
+    this.quizService.currentSubject = name
     this.quizService.fetchQuiz(name)
     this.router.navigate(['quiz'])
   }

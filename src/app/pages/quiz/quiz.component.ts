@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { QuizService } from 'src/app/services/quiz.service';
 import { FormBuilder } from "@angular/forms";
+import { EvalService } from 'src/app/services/eval.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-quiz',
@@ -10,23 +12,21 @@ import { FormBuilder } from "@angular/forms";
 export class QuizComponent implements OnInit {
   quiz
   currentQuestion = 0
-  question; answer; score = 0
+  question; answer; score = 0; total
   disabled = true
   finish: boolean
 
-  // @ViewChild('a') elA
-  // @ViewChild('b') elB
-  // @ViewChild('c') elC
-
   constructor(
     private quizService: QuizService,
-    public fb: FormBuilder
+    public fb: FormBuilder,
+    private evalService: EvalService,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
     this.quizService.getQuiz('bt-social').valueChanges().subscribe(data=> {
       this.quiz = data.pop()['data']
-      console.log(this.quiz);
+      this.total = this.quiz.length
       this.loadQuestion()
     })
   }
@@ -61,6 +61,12 @@ export class QuizComponent implements OnInit {
   changeAnswer(ev) {
     this.answer = ev.target.value
     this.disabled = false
+  }
+
+  finishQuiz() {
+    let user = this.userService.getCurrentUser()
+    let subject = this.quizService.currentSubject
+    this.evalService.sendMarks(user, subject, this.score, this.total)
   }
 
 }

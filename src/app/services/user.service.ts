@@ -13,4 +13,9 @@ export class UserService {
   getUsers() {
     return this.firebaseProject1.collection('users').valueChanges()
   }
+
+  getCurrentUser() {
+    let user = JSON.parse(localStorage.getItem('userData'))
+    return user.id
+  }
 }

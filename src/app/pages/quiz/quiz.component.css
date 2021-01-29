@@ -41,7 +41,7 @@ input[type='radio']{
   height: 20px;
 }
 
-button {
+#next {
   width: 100%;
   background-color: #bada55;
   border: none;
@@ -53,7 +53,7 @@ button {
   font-family: amiri;
 }
 
-button:hover {
+#next:hover {
   background: #789d00;
 }
 

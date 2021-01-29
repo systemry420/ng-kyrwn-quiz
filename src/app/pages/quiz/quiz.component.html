@@ -26,10 +26,13 @@
               </dl>
             </form>
         </div>
-        <button [disabled]="disabled" id="submit" (click)="onSubmit()">Submit</button>
+        <button [disabled]="disabled" id="next" (click)="onSubmit()">Submit</button>
     </div>
 </ng-container>
 
 <ng-container *ngIf="finish">
-  <h1>You've done</h1>
+  <div class="container">
+    <h1>You've done</h1>
+    <button class="btn btn-block btn-danger" (click)="finishQuiz()">Finish and Send</button>
+  </div>
 </ng-container>

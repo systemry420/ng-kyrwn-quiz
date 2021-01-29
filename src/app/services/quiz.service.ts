@@ -5,6 +5,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
   providedIn: 'root'
 })
 export class QuizService {
+  public currentSubject
   quiz
   constructor(
     @Inject('firebaseProject2') private fb: AngularFirestore,
