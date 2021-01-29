@@ -6,19 +6,19 @@
             <form >
               <dl>
                 <dd>
-                  <input #a [checked]="uncheck" (change)="changeAnswer($event)" value="1" name="answer" type="radio" id="a">
+                  <input (change)="changeAnswer($event)" value="1" name="answer" type="radio" id="a">
                   <label for="a">
                     {{question[1]}}
                   </label>
                 </dd>
                 <dd>
-                  <input #b [checked]="uncheck" (change)="changeAnswer($event)" value="2" name="answer" type="radio" id="b">
+                  <input (change)="changeAnswer($event)" value="2" name="answer" type="radio" id="b">
                   <label for="b">
                     {{question[2]}}
                   </label>
                 </dd>
                 <dd>
-                  <input #c [checked]="uncheck" (change)="changeAnswer($event)" value="3" name="answer" type="radio" id="c">
+                  <input (change)="changeAnswer($event)" value="3" name="answer" type="radio" id="c">
                   <label for="c">
                     {{question[3]}}
                   </label>
@@ -26,7 +26,7 @@
               </dl>
             </form>
         </div>
-        <button id="submit" (click)="onSubmit()">Submit</button>
+        <button [disabled]="disabled" id="submit" (click)="onSubmit()">Submit</button>
     </div>
 </ng-container>
 

@@ -11,7 +11,7 @@ export class QuizComponent implements OnInit {
   quiz
   currentQuestion = 0
   question; answer; score = 0
-  uncheck
+  disabled = true
   finish: boolean
 
   // @ViewChild('a') elA
@@ -32,6 +32,7 @@ export class QuizComponent implements OnInit {
   }
 
   loadQuestion(){
+    this.disabled = true
     if(this.quiz.length == 0) {
       this.finish = true
     }
@@ -50,16 +51,16 @@ export class QuizComponent implements OnInit {
     this.deselect()
   }
 
-  deselect() { // fix this shit
-    this.uncheck = false
-    // this.elA.checked = false
-    // this.elB.checked = false
-    // this.elC.checked = false
+  deselect() {
+    const radios = document.querySelectorAll('input')
+    radios.forEach((radio: HTMLInputElement) => {
+      radio.checked = false
+    })
   }
 
   changeAnswer(ev) {
     this.answer = ev.target.value
-
+    this.disabled = false
   }
 
 }
