@@ -23,8 +23,8 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  fetchQuiz(name) {
-    this.quizService.currentSubject = name
+  fetchQuiz(name, content) {
+    this.quizService.currentSubject = {name, content}
     this.quizService.fetchQuiz(name)
     this.router.navigate(['quiz'])
   }

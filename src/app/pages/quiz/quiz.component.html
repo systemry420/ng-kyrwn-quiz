@@ -1,5 +1,15 @@
-<app-navbar></app-navbar>
+<app-navbar [text]="subject.content"></app-navbar>
+
+<ng-container *ngIf="!finish && !quiz" style="margin: 1em 0;">
+  <div class="container"  style="margin: 1em 0;">
+    <button class="btn btn-primary btn-block" (click)="startQuiz()">Start Quiz</button>
+  </div>
+</ng-container>
+
 <ng-container *ngIf="!finish && quiz">
+      <div class="container time">
+        Remaining time: {{00+":"+ minutes+":"+ seconds}}
+      </div>
       <div class="quiz">
         <div class="quiz-header">
             <h2 id="question">{{question[0]}}</h2>
@@ -31,8 +41,9 @@
 </ng-container>
 
 <ng-container *ngIf="finish">
-  <div class="container">
+  <div class="container"  style="margin: 1em 0;">
     <h1>You've done</h1>
+    <h3 *ngIf="minutes == 0 && seconds == 0">Time is out!</h3>
     <button class="btn btn-block btn-danger" (click)="finishQuiz()">Finish and Send</button>
   </div>
 </ng-container>

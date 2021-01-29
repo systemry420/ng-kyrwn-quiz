@@ -12,11 +12,16 @@ export class EvalService {
 
   sendMarks(user, subject, mark, total) {
     console.log(user, subject, mark, total);
-    this.fs.collection('eval').doc('user1')
+
+    return new Promise<any>((resolve, reject) => {
+      this.fs.collection('eval').doc('user1')
       .update({
         'subjects': {
           'name': subject, 'mark': mark, 'total': total
         }
-      })
+      }).then(res => {
+        resolve(res)
+      }, err => reject(err))
+    })
   }
 }

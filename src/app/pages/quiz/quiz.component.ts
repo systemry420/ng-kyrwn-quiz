@@ -15,6 +15,8 @@ export class QuizComponent implements OnInit {
   question; answer; score = 0; total
   disabled = true
   finish: boolean
+  subject; time; end; data
+  minutes = 0; seconds = 0
 
   constructor(
     private quizService: QuizService,
@@ -24,11 +26,38 @@ export class QuizComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.quizService.getQuiz('bt-social').valueChanges().subscribe(data=> {
-      this.quiz = data.pop()['data']
-      this.total = this.quiz.length
-      this.loadQuestion()
+    this.subject = this.quizService.currentSubject
+    this.quizService
+    .getQuiz(this.subject.name)
+    .valueChanges().subscribe(data=> {
+      this.data = data.pop()
     })
+  }
+
+  startQuiz() {
+    this.quiz = this.data['data']
+    this.total = this.quiz.length
+    this.startTimer(1)
+    this.loadQuestion()
+  }
+
+  startTimer(min) {
+    let start = new Date().getTime()
+    let b = min * 60 * 1000
+    let time = setInterval(()=>{
+      if(b == 0) {
+        clearInterval(time)
+        this.finish = true
+      }
+      let end = new Date(start +(b-=1000)).getTime()
+      let diff = end - start
+      let totalSec = Math.floor(diff / 1000)
+      let mins = Math.floor(totalSec % 3600 / 60)
+      let secs = totalSec % 60
+      this.minutes = mins
+      this.seconds = secs
+      // console.log(diff, totalSec, mins, secs);
+    }, 1000)
   }
 
   loadQuestion(){
@@ -65,7 +94,7 @@ export class QuizComponent implements OnInit {
 
   finishQuiz() {
     let user = this.userService.getCurrentUser()
-    let subject = this.quizService.currentSubject
+    let subject = this.quizService.currentSubject.name
     this.evalService.sendMarks(user, subject, this.score, this.total)
   }
 
