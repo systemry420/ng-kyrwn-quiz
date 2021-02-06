@@ -26,11 +26,11 @@ export class AuthService {
 
   login(email: string, password: string) {
     let valid: boolean = false
-    console.log(this.users);
+    // console.log(this.users);
 
     for (let i = 0; i < this.users.length; i++) {
       const user = this.users[i];
-      console.log(user.id, user.password, email, password);
+      // console.log(user.id, user.password, email, password);
       if(email == user.id && password == user.password){
         valid = true
         console.log(user);

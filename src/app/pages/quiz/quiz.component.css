@@ -10,6 +10,11 @@
   font-family: amiri;
 }
 
+.container {
+  font-family: amiri;
+  text-align: center;
+}
+
 .quiz-header {
   padding: 1em;
 }
@@ -50,6 +55,9 @@ input[type='radio']{
   padding: 1em;
   font-size: 1em;
   font-weight: 800;
+}
+
+button {
   font-family: amiri;
 }
 

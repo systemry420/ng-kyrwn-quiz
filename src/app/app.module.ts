@@ -18,7 +18,7 @@ import {
   AngularFirestoreProject1,
   AngularFirestoreProject2,
 } from './firebase.factory';
-import { PLATFORM_ID, NgZone, LOCALE_ID } from '@angular/core';
+import { PLATFORM_ID, NgZone } from '@angular/core';
 import { QuizComponent } from './pages/quiz/quiz.component';
 
 @NgModule({

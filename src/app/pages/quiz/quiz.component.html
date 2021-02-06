@@ -8,7 +8,10 @@
 
 <ng-container *ngIf="!finish && quiz">
       <div class="container time">
-        Remaining time: {{00+":"+ minutes+":"+ seconds}}
+        <h3>الوقت {{00+":"+ minutes+":"+ seconds}}</h3>
+      </div>
+      <div class="container total">
+        <h3>عدد الأسئلة {{ counter }}</h3>
       </div>
       <div class="quiz">
         <div class="quiz-header">
@@ -36,14 +39,14 @@
               </dl>
             </form>
         </div>
-        <button [disabled]="disabled" id="next" (click)="onSubmit()">Submit</button>
+        <button [disabled]="disabled" id="next" (click)="onSubmit()">التالي</button>
     </div>
 </ng-container>
 
 <ng-container *ngIf="finish">
   <div class="container"  style="margin: 1em 0;">
-    <h1>You've done</h1>
-    <h3 *ngIf="minutes == 0 && seconds == 0">Time is out!</h3>
-    <button class="btn btn-block btn-danger" (click)="finishQuiz()">Finish and Send</button>
+    <h1>نهاية الامتحان</h1>
+    <h3 *ngIf="minutes == 0 && seconds == 0">انتهى الوقت</h3>
+    <button class="btn btn-block btn-danger" (click)="finishQuiz()">إضغط لإرسال أجوبتك</button>
   </div>
 </ng-container>

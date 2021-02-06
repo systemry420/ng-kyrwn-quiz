@@ -12,7 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 export class QuizComponent implements OnInit {
   quiz
   currentQuestion = 0
-  question; answer; score = 0; total
+  question; answer; score = 0; total; counter
   disabled = true
   finish: boolean
   subject; time; end; data
@@ -37,6 +37,7 @@ export class QuizComponent implements OnInit {
   startQuiz() {
     this.quiz = this.data['data']
     this.total = this.quiz.length
+    this.counter = this.quiz.length + 1
     this.startTimer(1)
     this.loadQuestion()
   }
@@ -68,6 +69,8 @@ export class QuizComponent implements OnInit {
     else {
       this.question = this.quiz.pop()['ques']
     }
+
+    this.counter--
   }
 
   onSubmit() {
