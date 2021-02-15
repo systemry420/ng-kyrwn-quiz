@@ -33,14 +33,13 @@ export class AuthService {
       // console.log(user.id, user.password, email, password);
       if(email == user.id && password == user.password){
         valid = true
-        console.log(user);
         this.handleAuth(
           user.id,
           user.class,
           user.password,
-          user.name,
+          user['full-name'],
           user.level,
-          user.subs
+          user.subjects
         )
         break;
       }
@@ -54,6 +53,8 @@ export class AuthService {
       id, cls, password, name, level, subs
     }
     this.userSubject.next(userToken)
+    this.userSubject.subscribe(data => console.log(data));
+
     localStorage.setItem('userData', JSON.stringify(userToken))
   }
 }

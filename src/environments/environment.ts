@@ -5,13 +5,13 @@
 export const environment = {
   production: false,
   firebaseConfig1: {
-    apiKey: "AIzaSyDoiV-33Ts9jNdSDzuh4U7eSRAqvMFeHHc",
-    authDomain: "fb-clone-8b1ccc.firebaseapp.com",
-    databaseURL: "https://fb-clone-8b1ccc.firebaseio.com",
-    projectId: "fb-clone-8b1ccc",
-    storageBucket: "fb-clone-8b1ccc.appspot.com",
-    messagingSenderId: "1058730359097",
-    appId: "1:1058730359097:web:8fd7fb3561ea37ff1e90e8"
+    apiKey: "AIzaSyCnowTTt-juDiyc-ykbgiQeGSVh9j6SWQw",
+    authDomain: "kayrawan-lb.firebaseapp.com",
+    projectId: "kayrawan-lb",
+    storageBucket: "kayrawan-lb.appspot.com",
+    messagingSenderId: "384881538238",
+    appId: "1:384881538238:web:9afefa6c231f0ba876daef",
+    measurementId: "G-MF3DE5NM4P"
   },
   firebaseConfig2:{
     apiKey: "AIzaSyAiEA_TpvnjNib-EWCxn2awsT4x5L4kRwA",
@@ -23,6 +23,7 @@ export const environment = {
     appId: "1:468059140378:web:7cc6d6f2cbb97962fafca3",
     measurementId: "G-FL849SJ7KJ"
   }
+
 };
 
 /*

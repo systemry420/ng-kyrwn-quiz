@@ -26,20 +26,23 @@ export class QuizComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.subject = this.quizService.currentSubject
-    this.quizService
-    .getQuiz(this.subject.name)
-    .valueChanges().subscribe(data=> {
-      this.data = data.pop()
-    })
+    // this.subject = this.quizService.currentSubject
+    // this.quizService
+    // .getQuiz(this.subject.name)
+    // .valueChanges().subscribe(data=> {
+    //   this.data = data.pop()
+    // })
   }
 
   startQuiz() {
-    this.quiz = this.data['data']
-    this.total = this.quiz.length
-    this.counter = this.quiz.length + 1
-    this.startTimer(1)
-    this.loadQuestion()
+    console.log('shit');
+
+    this.quizService.fetchQuiz('health-care', 'bt1-nursing')
+    // this.quiz = this.data['data']
+    // this.total = this.quiz.length
+    // this.counter = this.quiz.length + 1
+    // this.startTimer(1)
+    // this.loadQuestion()
   }
 
   startTimer(min) {
