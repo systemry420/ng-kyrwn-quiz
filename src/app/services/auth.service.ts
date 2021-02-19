@@ -3,12 +3,10 @@ import { BehaviorSubject } from 'rxjs';
 import { UserService } from './user.service';
 
 interface UserToken {
-  cls: string;
   id: string;
   level: string;
   name: string;
   password: string;
-  subs: string[];
 }
 
 @Injectable({
@@ -35,11 +33,9 @@ export class AuthService {
         valid = true
         this.handleAuth(
           user.id,
-          user.class,
           user.password,
           user['full-name'],
           user.level,
-          user.subjects
         )
         break;
       }
@@ -47,10 +43,10 @@ export class AuthService {
     return valid
   }
 
-  private handleAuth(id, cls, password, name, level, subs) {
+  private handleAuth(id, password, name, level) {
     // const expDate = new Date(new Date().getTime() + expiresIn * 1000)
     const userToken: UserToken = {
-      id, cls, password, name, level, subs
+      id, password, name, level
     }
     this.userSubject.next(userToken)
     this.userSubject.subscribe(data => console.log(data));

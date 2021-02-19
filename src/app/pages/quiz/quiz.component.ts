@@ -17,7 +17,7 @@ export class QuizComponent implements OnInit {
   finish: boolean
   subject; time; end; data
   minutes = 0; seconds = 0
-
+  quizInfo; quizData
   constructor(
     private quizService: QuizService,
     public fb: FormBuilder,
@@ -26,7 +26,18 @@ export class QuizComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.subject = this.quizService.currentSubject
+    this.quizService.currentSubject.subscribe(sub => {
+      this.subject = sub
+    })
+
+    this.quizService.currentQuiz.subscribe(quiz => {
+      this.quizInfo = {
+        'day': quiz.day,
+        'time': quiz.time,
+        'duration': quiz.duration,
+      }
+      this.quizData = quiz.data
+    })
     // this.quizService
     // .getQuiz(this.subject.name)
     // .valueChanges().subscribe(data=> {
@@ -64,44 +75,10 @@ export class QuizComponent implements OnInit {
     }, 1000)
   }
 
-  loadQuestion(){
-    this.disabled = true
-    if(this.quiz.length == 0) {
-      this.finish = true
-    }
-    else {
-      this.question = this.quiz.pop()['ques']
-    }
-
-    this.counter--
-  }
-
-  onSubmit() {
-    if(this.answer == this.question[4]) {
-      this.score++
-    }
-    this.loadQuestion()
-    console.log(this.score);
-
-    this.deselect()
-  }
-
-  deselect() {
-    const radios = document.querySelectorAll('input')
-    radios.forEach((radio: HTMLInputElement) => {
-      radio.checked = false
-    })
-  }
-
-  changeAnswer(ev) {
-    this.answer = ev.target.value
-    this.disabled = false
-  }
-
   finishQuiz() {
-    let user = this.userService.getCurrentUser()
-    let subject = this.quizService.currentSubject.name
-    this.evalService.sendMarks(user, subject, this.score, this.total)
+    // let user = this.userService.getCurrentUser()
+    // let subject = this.quizService.currentSubject.name
+    // this.evalService.sendMarks(user, subject, this.score, this.total)
   }
 
 }

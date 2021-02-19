@@ -1,7 +1,12 @@
-<!-- <app-navbar [text]="subject.content"></app-navbar> -->
+<app-navbar [text]="subject.ar"></app-navbar>
 
 <ng-container *ngIf="!finish && !quiz" style="margin: 1em 0;">
   <div class="container"  style="margin: 1em 0;">
+    <div class="info">
+      <h4>Day: {{ quizInfo.day}} </h4>
+      <h4>Time: {{ quizInfo.time }} </h4>
+      <h4>Duration: {{ quizInfo.duration}} </h4>
+    </div>
     <button class="btn btn-primary btn-block" (click)="startQuiz()">Start Quiz</button>
   </div>
 </ng-container>

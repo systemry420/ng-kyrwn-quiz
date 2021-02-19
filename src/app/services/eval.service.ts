@@ -7,21 +7,21 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class EvalService {
 
   constructor(
-    @Inject('firebaseProject1') private fs: AngularFirestore,
+    @Inject('fbQuiz') private fs: AngularFirestore,
   ) { }
 
   sendMarks(user, subject, mark, total) {
-    console.log(user, subject, mark, total);
+    // console.log(user, subject, mark, total);
 
-    return new Promise<any>((resolve, reject) => {
-      this.fs.collection('eval').doc('user1')
-      .update({
-        'subjects': {
-          'name': subject, 'mark': mark, 'total': total
-        }
-      }).then(res => {
-        resolve(res)
-      }, err => reject(err))
-    })
+    // return new Promise<any>((resolve, reject) => {
+    //   this.fs.collection('eval').doc('user1')
+    //   .update({
+    //     'subjects': {
+    //       'name': subject, 'mark': mark, 'total': total
+    //     }
+    //   }).then(res => {
+    //     resolve(res)
+    //   }, err => reject(err))
+    // })
   }
 }

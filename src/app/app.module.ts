@@ -46,12 +46,12 @@ import { QuizComponent } from './pages/quiz/quiz.component';
       useValue: environment
     },
     {
-      provide: 'firebaseProject1',
+      provide: 'fbKayrawan',
       deps: [PLATFORM_ID, NgZone],
       useFactory: AngularFirestoreProject1
     },
     {
-      provide: 'firebaseProject2',
+      provide: 'fbQuiz',
       deps: [PLATFORM_ID, NgZone],
       useFactory: AngularFirestoreProject2
     }

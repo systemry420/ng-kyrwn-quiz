@@ -1,5 +1,7 @@
 <app-navbar text="Dashboard"></app-navbar>
 <ng-container>
-    <!-- <app-card *ngFor="let sub of subs" content={{sub.content}} (click)="fetchQuiz(sub.name, sub.content)">
-    </app-card> -->
+    <app-card *ngFor="let sub of subjects; let i = index"
+      [content]="sub.ar"
+      (click)="fetchQuiz(sub.ar, sub.en)">
+    </app-card>
 </ng-container>
