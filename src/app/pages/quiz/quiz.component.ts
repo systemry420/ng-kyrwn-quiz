@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { QuizService } from 'src/app/services/quiz.service';
-import { FormBuilder } from "@angular/forms";
+import { FormArray, FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { EvalService } from 'src/app/services/eval.service';
 import { UserService } from 'src/app/services/user.service';
+import { firebaseData } from './../../../assets/data-model'
 
 @Component({
   selector: 'app-quiz',
@@ -11,6 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class QuizComponent implements OnInit {
   quiz
+  quizForm: FormGroup
   currentQuestion = 0
   question; answer; score = 0; total; counter
   disabled = true
@@ -26,34 +28,36 @@ export class QuizComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.quizService.currentSubject.subscribe(sub => {
-      this.subject = sub
-    })
-
-    this.quizService.currentQuiz.subscribe(quiz => {
-      this.quizInfo = {
-        'day': quiz.day,
-        'time': quiz.time,
-        'duration': quiz.duration,
-      }
-      this.quizData = quiz.data
-    })
-    // this.quizService
-    // .getQuiz(this.subject.name)
-    // .valueChanges().subscribe(data=> {
-    //   this.data = data.pop()
+    // this.quizService.currentSubject.subscribe(sub => {
+    //   this.subject = sub
     // })
+
+    // this.quizService.currentQuiz.subscribe(quiz => {
+    //   this.quizInfo = {
+    //     'day': quiz.day,
+    //     'time': quiz.time,
+    //     'duration': quiz.duration,
+    //   }
+    //   this.quizData = quiz.data
+    // })
+
+    this.quizInfo = firebaseData.quiz
+
+    this.quizData = this.quizInfo.questions
+
   }
 
-  startQuiz() {
-    console.log('shit');
 
-    this.quizService.fetchQuiz('health-care', 'bt1-nursing')
-    // this.quiz = this.data['data']
-    // this.total = this.quiz.length
-    // this.counter = this.quiz.length + 1
+
+  startQuiz() {
+    console.log(this.quizData);
+
+    // this.quizService.currentQuiz.subscribe(data => {
+    //   this.quizData = data.data
+    //   console.log(data);
+
+    // })
     // this.startTimer(1)
-    // this.loadQuestion()
   }
 
   startTimer(min) {
@@ -73,6 +77,11 @@ export class QuizComponent implements OnInit {
       this.seconds = secs
       // console.log(diff, totalSec, mins, secs);
     }, 1000)
+  }
+
+  onSubmit(form) {
+    console.log(form.value);
+
   }
 
   finishQuiz() {

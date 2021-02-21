@@ -56,7 +56,10 @@ export class DashboardComponent implements OnInit {
   fetchQuiz(ar, en) {
     this.quizService.currentSubject.next({ar, en})
     this.quizService.fetchQuiz(en, this.user.level)
-    this.router.navigate(['quiz'])
+    .subscribe(quiz =>{
+      this.quizService.currentQuiz.next(quiz)
+      this.router.navigate(['quiz'])
+    })
   }
 
 }

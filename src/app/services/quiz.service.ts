@@ -20,12 +20,8 @@ export class QuizService {
     let d = (date.getFullYear() + '-0' + (date.getMonth()+1) + '-' + date.getDate()).toString()
     console.log(d);
 
-    this.fb.collection('exams').doc(level + '/' + sub + '/' + d)
+    return this.fb.collection('exams').doc(level + '/' + sub + '/' + d)
     .valueChanges()
-    .subscribe(quiz => {
-      this.currentQuiz.next(quiz)
-
-    })
     // .pipe(
     //   map(changes => {
     //     const data = changes.payload.data();

@@ -20,6 +20,7 @@ import {
 } from './firebase.factory';
 import { PLATFORM_ID, NgZone } from '@angular/core';
 import { QuizComponent } from './pages/quiz/quiz.component';
+import { TextareaAutoresizeDirective } from './pages/quiz/textarea-autoresize.directive';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { QuizComponent } from './pages/quiz/quiz.component';
     DashboardComponent,
     NavbarComponent,
     CardComponent,
-    QuizComponent
+    QuizComponent,
+    TextareaAutoresizeDirective
   ],
   imports: [
     BrowserModule,

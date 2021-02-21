@@ -10,6 +10,18 @@
   font-family: amiri;
 }
 
+textarea {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  min-height: 50px;
+  resize: none;
+}
+
+.question {
+  margin-top: 2em;
+}
+
 .container {
   font-family: amiri;
   text-align: center;
