@@ -1,1 +1,85 @@
-<p>quiz works!</p>
+<main>
+  <!-- <h1>وضع امتحان</h1> -->
+  <ng-container> <!--  *ngIf="!step1"-->
+    <form>
+      <div class="form-group col-md-12">
+        <label for="level">اليوم</label>
+        <input type="date" name="day" [(ngModel)]="day" class="form-control" />
+      </div>
+
+      <div class="form-group col-md-12">
+        <label for="level">الساعة</label>
+        <input type="time" name="time" value="8:00" [(ngModel)]="time" class="form-control" />
+      </div>
+
+      <div class="form-group col-md-12">
+        <label for="class">إختيار الصف</label>
+        <select required name="class" class="form-control" [(ngModel)]="clas" (change)="getSubjects($event)">
+          <option value="-">- - - </option>
+          <option value="bt3-nursing">bt3-nursing </option>
+          <option value="bt1-nursing">bt1-nurse</option>
+          <option value="bt-accounting">bt-accounting </option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-12">
+        <label for="subject">إختيار المادة</label>
+        <select required name="subject" class="form-control" [(ngModel)]="subject">
+          <option *ngFor="let sub of subsNames" [value]="sub.key">{{sub.value}}</option>
+        </select>
+      </div>
+      <div class="form-group col-md-12">
+        <label for="subject">(بالدقيقة) تحديد المدة</label>
+        <input min="10" max="120" required type="number" class="form-control" [(ngModel)]="duration" name="question" placeholder="المدة" autocomplete="off">
+      </div>
+      <div class="form-group col-md-12">
+        <button (click)="next()" class="btn btn-primary btn-block">التالي</button>
+      </div>
+    </form>
+  </ng-container>
+
+  <ng-container> <!--  *ngIf="step1" -->
+    <form>
+      <div class="form-group col-md-12">
+        <label for="level"> إختر نوع السؤال</label>
+        <select required name="level" class="form-control" (change)="changeType($event)">
+          <option value="">- - - </option>
+          <option value="mcq">خيارات متعددة</option>
+          <option value="qa">سؤال/جواب</option>
+        </select>
+      </div>
+      <div class="buttons">
+        <button id="submit" class="btn btn-danger" (click)="submitQuiz()">حفظ الإختبار</button>
+      </div>
+    </form>
+  </ng-container>
+
+  <p class="info"></p>
+
+  <ng-container *ngIf="questionType == 'mcq'">
+    <app-quiz (nextEvent)="addQuestion($event)"></app-quiz>
+  </ng-container>
+  <ng-container *ngIf="questionType == 'qa'">
+    <app-question (nextEvent)="addQuestion($event)"></app-question>
+  </ng-container>
+
+</main>
+<ng-container class="output">
+  <div *ngFor="let q of output; let i = index" class="question">
+    <i
+      class="fa fa-remove"
+      style="color: red; padding: 6px; font-size: 1.5em; cursor: pointer;"
+      (click)="removeQuestion(i)">
+    </i>
+
+    <div *ngIf="q.type == 'mcq' " class="mcq">
+      {{ q.q.question }} <br>
+      {{ q.q.option1 }} <br>
+      {{ q.q.option2 }} <br>
+      {{ q.q.option3 }} <br>
+    </div>
+    <div *ngIf="q.type == 'qa' " class="qa">
+      {{ q.q }}
+    </div>
+  </div>
+</ng-container>

@@ -18,10 +18,12 @@ export class TLoginComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.email);
+
     this.authService.teacherLogin(this.email, this.password)
     .subscribe(response => {
       if(response.registered) {
-        this.router.navigate(['tdashboard'])
+        this.router.navigate(['tr', 'dashboard'])
       }
     }, error=> {
       this.error = error

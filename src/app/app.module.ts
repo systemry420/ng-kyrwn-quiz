@@ -39,7 +39,7 @@ import { TeacherModule } from './teacher/teacher.module';
     AngularFirestoreModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    // TeacherModule
+    TeacherModule
   ],
   providers: [
     {
