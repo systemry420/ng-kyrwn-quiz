@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     let valid = this.authService.login(this.email, this.password)
     if(valid) {
-      this.router.navigate(['dashboard'])
+      this.router.navigate(['home'])
     }
     else {
       console.log('error');
