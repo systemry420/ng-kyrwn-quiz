@@ -1,1 +1,26 @@
-<p>t-login works!</p>
+<main>
+  <div id="image">
+    <i
+    style="font-size: 2em; color: rgb(0, 125, 209);"
+    class="fas fa-chalkboard-teacher"></i>
+    <h3>بوابة المعلم</h3>
+  </div>
+
+  <span class="alert alert-danger" *ngIf="error">{{error}}</span>
+
+  <section class="wrapper">
+    <form (ngSubmit)="onSubmit()">
+      <fieldset>
+        <div class="form-group">
+          <label for="email">البريد الالكتروني</label>
+          <input name="email" type="email" class="form-control" id="email" placeholder="البريد الالكتروني">
+        </div>
+        <div class="form-group">
+          <label for="password">كلمة المرور</label>
+          <input name="password" type="password" class="form-control" id="password" placeholder="كلمة المرور">
+        </div>
+        <button type="submit" class="btn btn-success btn-block">دخول</button>
+      </fieldset>
+    </form>
+  </section>
+</main>

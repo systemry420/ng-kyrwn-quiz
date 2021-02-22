@@ -1,6 +1,223 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
 
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+
 * {
-  direction: rtl;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: amiri;
+  }
+
+main {
+    /* direction: rtl; */
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2em 0;
+    min-height: 50vh;
+    font-family: amiri;
+    text-align: center;
+}
+
+.sections {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.sections section {
+    font-family: amiri;
+    width: 40%;
+    border-radius: 10px;
+    min-height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    font-size: 1.5em;
+    background-color: #fafafa;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 0 7px 7px lightgray;
+    margin: 0.8em;
+    color: #333;
+    direction: rtl;
+}
+
+
+.wrapper {
+    /* direction: rtl; */
+    max-width: 600px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2);
+    background-color: rgba(250, 250, 250);
+    padding: 1em;
+    overflow: hidden;
+    margin: 2em auto;
+    font-family: amiri;
+}
+
+#quiz {
+    display: none;
+    background-color: #fcfcfc;
+}
+
+.container-header {
+    padding: 1em;
+}
+
+.container-header h1 {
+    padding: .3em;
+}
+
+#list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#list li {
+    margin: 1em 0;
+    font-size: 1.3em;
+    border-bottom: 1px solid lightgray;
+    padding: .5em;
+    align-items: center;
+    display: flex;
+}
+
+#list li label {
+    margin: 0 10px;
+}
+
+input[type='radio']{
+    width: 20px;
+    height: 20px;
+}
+
+#image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2em;
+    color: #222;
+}
+
+.img {
+    /* border: 1px solid #111; */
+    border-radius: 20% 50% 50% 50%;
+    animation: rotate 1s linear;
+}
+
+@keyframes rotate {
+    0% {
+        transform: scale(0.2);
+        transform: rotate(90deg);
+    }
+    50% {
+        transform: rotate(180deg);
+        transform: scale(0.5);
+    }
+    100%{
+        transform: scale(1);
+        transform: rotate(360deg);
+    }
+}
+
+button.green {
+    width: 100%;
+    background-color: #bada55;
+    border: none;
+    display: block;
+    cursor: pointer;
+    padding: 1em;
+    font-size: 1em;
+    font-weight: 800;
+    font-family: amiri;
+}
+
+button.green:hover {
+    background: #789d00;
+}
+
+.contact {
+    direction: rtl;
+    width: 90%;
+    border: 1px solid lightgray;
+    box-shadow: 0 0 5px 5px lightgray;
+    font-size: 1.3em;
+    color: #333;
+    border-radius: 10px;
+    background-color: #fbfbfb;
+}
+
+.start {
+    margin: 5px 0;
+}
+
+.more {
+    font-family: amiri;
+    padding: .5em;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+
+.wrong {
+    max-width: 600px;
+    width: 100%;
+}
+
+.wrong .container {
+    padding: 1.2em;
+    background-color: #fbfbfb;
+}
+
+.wrong ul {
+    list-style: none;
+}
+
+@media screen and (max-width: 768px) {
+    nav ul li {
+        padding: 1.2em .5em;
+        font-size: .8em;
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+    }
+
+    main section {
+        width: 90%;
+        /* font-size: 2em; */
+    }
+
+    .sections section {
+        width: 90%;
+    }
+
+    .staff section {
+
+        width: 90%;
+    }
+
+
+    .container {
+        width: 90%;
+    }
+
+    .info {
+        display: block;
+        /* display: flex; */
+        align-items: center;
+    }
+
 }

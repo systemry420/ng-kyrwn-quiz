@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { QuizService } from 'src/app/pages/services/quiz.service';
+import { QuizService } from 'src/app/services/quiz.service';
 import { FormArray, FormBuilder, FormControl, FormGroup } from "@angular/forms";
-import { EvalService } from 'src/app/pages/services/eval.service';
-import { UserService } from 'src/app/pages/services/user.service';
+import { EvalService } from 'src/app/services/eval.service';
+import { UserService } from 'src/app/services/user.service';
 import { firebaseData } from './../../../assets/data-model'
 
 @Component({
