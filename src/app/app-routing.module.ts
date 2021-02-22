@@ -3,25 +3,22 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoginComponent } from './pages/login/login.component';
 import { QuizComponent } from './pages/quiz/quiz.component';
+import { TLoginComponent } from './teacher/t-login/t-login.component';
 
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "dashboard",
+    redirectTo: "tlogin",
     pathMatch: "full",
     // component: LoginComponent
   },
   {
-    path: "login",
+    path: "slogin",
     component: LoginComponent
   },
   {
-    path: "dashboard",
-    component: DashboardComponent
-  },
-  {
-    path: "quiz",
-    component: QuizComponent
+    path: "tlogin",
+    component: TLoginComponent
   }
 ];
 

@@ -1,0 +1,28 @@
+import { NgModule } from '@angular/core'
+import { RouterModule, Routes } from '@angular/router'
+import { TLoginComponent } from './t-login/t-login.component'
+import { DashboardComponent } from './dashboard/dashboard.component'
+
+const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+  {
+    path: 'login',
+    component: TLoginComponent
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent
+  }
+]
+
+@NgModule({
+  imports: [
+    RouterModule.forChild(routes)
+  ],
+  exports: [ RouterModule]
+})
+export class TeacherRoutingModule {}

@@ -21,6 +21,7 @@ import {
 import { PLATFORM_ID, NgZone } from '@angular/core';
 import { QuizComponent } from './pages/quiz/quiz.component';
 import { TextareaAutoresizeDirective } from './pages/quiz/textarea-autoresize.directive';
+import { TeacherModule } from './teacher/teacher.module';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { TextareaAutoresizeDirective } from './pages/quiz/textarea-autoresize.di
     FormsModule,
     AngularFirestoreModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    TeacherModule
   ],
   providers: [
     {
