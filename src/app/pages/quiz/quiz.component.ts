@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { QuizService } from 'src/app/services/quiz.service';
 import { FormArray, FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { EvalService } from 'src/app/services/eval.service';
-import { UserService } from 'src/app/services/user.service';
 import { firebaseData } from './../../../assets/data-model'
 
 @Component({
@@ -24,7 +23,6 @@ export class QuizComponent implements OnInit {
     private quizService: QuizService,
     public fb: FormBuilder,
     private evalService: EvalService,
-    private userService: UserService
   ) { }
 
   ngOnInit(): void {

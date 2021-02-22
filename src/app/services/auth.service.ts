@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { BehaviorSubject, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { UserService } from './user.service';
 
 interface UserToken {
   id: string;
@@ -19,12 +19,21 @@ export class AuthService {
   userSubject = new BehaviorSubject<UserToken>(null)
 
   constructor(
-    private userService: UserService,
+    @Inject('fbQuiz') private fb: AngularFirestore,
     private http: HttpClient) {
-    this.userService.getUsers().subscribe( data => {
+    this.getUsers().subscribe( data => {
       this.users = data
     })
   }
+
+  getUsers() {
+    return this.fb.collection('users').valueChanges()
+  }
+
+  getSubjects(level) {
+    return this.fb.collection('subjects').doc(level).valueChanges()
+  }
+
 
   teacherLogin(email: string, password: string) {
     return this.http.post<any>(

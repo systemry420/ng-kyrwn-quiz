@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { map, tap } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
 import { QuizService } from 'src/app/services/quiz.service';
-import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +16,6 @@ export class HomeComponent implements OnInit {
   constructor(
     private quizService: QuizService,
     private authService: AuthService,
-    private userService: UserService,
     private router: Router
   ) { }
 
@@ -31,7 +29,7 @@ export class HomeComponent implements OnInit {
   }
 
 
-    this.userService.getSubjects(this.user.level)
+    this.authService.getSubjects(this.user.level)
     .pipe(map((data:any)=>{
       for(const key in data) {
         console.log(data[key]);
