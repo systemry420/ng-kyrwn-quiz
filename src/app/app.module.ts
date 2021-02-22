@@ -24,12 +24,12 @@ import { TeacherModule } from './teacher/teacher.module';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    LoginComponent,
-    HomeComponent,
+    // HomeComponent,
+    // LoginComponent,
+    // HomeComponent,
     NavbarComponent,
     CardComponent,
-    QuizComponent,
+    // QuizComponent,
     TextareaAutoresizeDirective
   ],
   imports: [
@@ -39,7 +39,7 @@ import { TeacherModule } from './teacher/teacher.module';
     AngularFirestoreModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    TeacherModule
+    // TeacherModule
   ],
   providers: [
     {
