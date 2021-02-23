@@ -1,0 +1,36 @@
+form {
+  margin-bottom: 1em;
+  width: 90%;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+}
+
+.btn {
+  margin-bottom: 1em;
+  font-family: amiri;
+}
+
+.question {
+  /* border: 1px solid gray; */
+  box-shadow: 0 0 3px 3px lightgray;
+  border-radius: 3px;
+  width: 90%;
+  margin: 1em auto;
+  padding: 0.5em;
+  text-align: right;
+}
+
+.form-control {
+  direction: rtl;
+}
+

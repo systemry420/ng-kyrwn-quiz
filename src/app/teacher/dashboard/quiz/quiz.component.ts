@@ -8,8 +8,12 @@ import { TeacherService } from 'src/app/services/teacher.service';
   styleUrls: ['./quiz.component.css']
 })
 export class QuizComponent implements OnInit {
-  step1 = false; subsNames
-  clas; subject; duration; day; time
+  step1 = true; subsNames
+  level = 'bt3-nursing'
+  subject = 'health-care'
+  duration = '66'
+  day = '2021-3-3'
+  time = '13:00'
   currentExam = []
   questionType;
   output = []
@@ -24,7 +28,7 @@ export class QuizComponent implements OnInit {
 
   next() {
     // this.teacherService.getStudent()
-    if(this.clas && this.subject){
+    if(this.level && this.subject){
       this.step1 = true;
     }
   }
@@ -62,7 +66,7 @@ export class QuizComponent implements OnInit {
   }
 
   submitQuiz() {
-    this.teacherService.addQuiz(this.day, this.time, this.duration, this.clas, this.subject, this.currentExam)
+    this.teacherService.addQuiz(this.day, this.time, this.duration, this.level, this.subject, this.currentExam)
     .then(response=>{
       console.log(response);
 

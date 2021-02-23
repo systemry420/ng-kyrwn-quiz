@@ -5,11 +5,15 @@ import { ProfileComponent } from '../dashboard/profile/profile.component';
 import { RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 import { FormsModule } from "@angular/forms";
+import { McqComponent } from './quiz/mcq/mcq.component';
+import { QaComponent } from './quiz/qa/qa.component';
 
 @NgModule({
   declarations: [
     QuizComponent,
-    ProfileComponent
+    ProfileComponent,
+    McqComponent,
+    QaComponent
   ],
   imports: [
     CommonModule,

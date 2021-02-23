@@ -1,0 +1,12 @@
+<div class="questions">
+  <form>
+    <div class="buttons">
+      <button (click)="nextQuestion()" id="next" class="btn btn-primary">السؤال التالي</button>
+    </div>
+
+    <div class="form-group col-md-12">
+      <!-- <label for="question">السؤال</label> -->
+      <input required type="text" class="form-control" [(ngModel)]="question" name="question" placeholder="السؤال" autocomplete="off">
+    </div>
+  </form>
+</div>

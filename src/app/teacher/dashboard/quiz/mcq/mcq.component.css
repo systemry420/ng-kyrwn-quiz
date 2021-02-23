@@ -1,0 +1,42 @@
+.quiz {
+  /* background-color: #eee; */
+  direction: rtl;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+label {
+  float: right;
+}
+
+.form-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.info {
+  text-align: center;
+}
+
+form {
+  margin: 0 auto 1em auto;
+  width: 90%;
+}
+
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+}
+
+.btn {
+  margin-bottom: 1em;
+  font-family: amiri;
+}

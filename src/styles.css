@@ -11,6 +11,10 @@
     font-family: amiri;
   }
 
+body {
+  background-color: #f9f9f9;
+}
+
 main {
     /* direction: rtl; */
     display: flex;

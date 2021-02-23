@@ -8,13 +8,13 @@ import { map } from 'rxjs/operators';
 export class TeacherService {
 
   constructor(
-    @Inject('fbQuiz') private kayrawanFS: AngularFirestore,
+    @Inject('fbQuiz') private fb: AngularFirestore,
   ) { }
 
   getSubjects(cls) {
     console.log(cls);
     // change this shit bt
-    return this.kayrawanFS.collection("bt").doc(cls)
+    return this.fb.collection("subjects").doc(cls)
     .snapshotChanges()
       .pipe(
         map(changes => {
@@ -30,7 +30,7 @@ export class TeacherService {
     let date = new Date()
     let d = ((date.getMonth() + 1) + '-' + date.getDate() + '-' + date.getFullYear() + date.getTime()).toString()
 
-    return this.kayrawanFS.collection('exams').doc(cls + '/'+ subject + '/'+ day)
+    return this.fb.collection('exams').doc(cls + '/'+ subject + '/'+ day)
     .set(
       {
         'day': day,

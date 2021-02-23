@@ -1,6 +1,6 @@
 <main>
-  <!-- <h1>وضع امتحان</h1> -->
-  <ng-container> <!--  *ngIf="!step1"-->
+  <h1>وضع امتحان</h1>
+  <ng-container *ngIf="!step1"> <!--  -->
     <form>
       <div class="form-group col-md-12">
         <label for="level">اليوم</label>
@@ -38,7 +38,7 @@
     </form>
   </ng-container>
 
-  <ng-container> <!--  *ngIf="step1" -->
+  <ng-container > <!-- *ngIf="step1"  -->
     <form>
       <div class="form-group col-md-12">
         <label for="level"> إختر نوع السؤال</label>
@@ -57,10 +57,10 @@
   <p class="info"></p>
 
   <ng-container *ngIf="questionType == 'mcq'">
-    <app-quiz (nextEvent)="addQuestion($event)"></app-quiz>
+    <app-mcq (nextEvent)="addQuestion($event)"></app-mcq>
   </ng-container>
   <ng-container *ngIf="questionType == 'qa'">
-    <app-question (nextEvent)="addQuestion($event)"></app-question>
+    <app-qa (nextEvent)="addQuestion($event)"></app-qa>
   </ng-container>
 
 </main>

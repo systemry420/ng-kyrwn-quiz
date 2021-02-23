@@ -1,0 +1,20 @@
+form {
+  margin: 0 auto 1em auto;
+  width: 90%;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+}
+
+.btn {
+  margin-bottom: 1em;
+  font-family: amiri;
+}
+
+.questions {
+  direction: rtl;
+}
