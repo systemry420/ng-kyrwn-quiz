@@ -15,7 +15,6 @@ export class QuizService {
   ) { }
 
   fetchQuiz(sub, level) {
-    // this.quiz = this.fb.collection('exams').doc(level + '/' + sub)
     let date = new Date()
     let d = (date.getFullYear() + '-0' + (date.getMonth()+1) + '-' + date.getDate()).toString()
     console.log(d);

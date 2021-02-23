@@ -20,6 +20,8 @@ import { PLATFORM_ID, NgZone } from '@angular/core';
 import { QuizComponent } from './pages/quiz/quiz.component';
 import { TextareaAutoresizeDirective } from './pages/quiz/textarea-autoresize.directive';
 import { TeacherModule } from './teacher/teacher.module';
+import { StudentsModule } from './pages/students.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -27,8 +29,8 @@ import { TeacherModule } from './teacher/teacher.module';
     // HomeComponent,
     // LoginComponent,
     // HomeComponent,
-    NavbarComponent,
-    CardComponent,
+    // NavbarComponent,
+    // CardComponent,
     // QuizComponent,
     TextareaAutoresizeDirective
   ],
@@ -39,7 +41,12 @@ import { TeacherModule } from './teacher/teacher.module';
     AngularFirestoreModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    TeacherModule
+    StudentsModule,
+    TeacherModule,
+    SharedModule
+  ],
+  exports: [
+    // NavbarComponent
   ],
   providers: [
     {

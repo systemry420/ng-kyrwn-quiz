@@ -12,7 +12,7 @@ export class QuizComponent implements OnInit {
   level = 'bt3-nursing'
   subject = 'health-care'
   duration = '66'
-  day = '2021-3-3'
+  day = '2021-03-03'
   time = '13:00'
   currentExam = []
   questionType;
@@ -22,6 +22,11 @@ export class QuizComponent implements OnInit {
     private router: Router,
     private teacherService: TeacherService,
   ) { }
+
+  log() {
+    console.log(this.day);
+
+  }
 
   ngOnInit(): void {
   }
@@ -68,12 +73,12 @@ export class QuizComponent implements OnInit {
       this.subject,
       this.currentExam
     )
-    .then(()=>{
-      console.log("added quiz")
-    })
-    .catch(error => {
-      console.log(error);
-    })
+    // .then(()=>{
+    //   console.log("added quiz")
+    // })
+    // .catch(error => {
+    //   console.log(error);
+    // })
   }
 
   getSubjects(ev) {

@@ -11,11 +11,11 @@
       <fieldset>
         <div class="form-group">
           <label for="email">البريد الالكتروني</label>
-          <input name="email" type="text" class="form-control" id="email" placeholder="البريد الالكتروني">
+          <input [(ngModel)]="email" name="email" type="text" class="form-control" id="email" placeholder="البريد الالكتروني">
         </div>
         <div class="form-group">
           <label for="password">كلمة المرور</label>
-          <input name="password" type="password" class="form-control" id="password" placeholder="كلمة المرور">
+          <input [(ngModel)]="password" name="password" type="password" class="form-control" id="password" placeholder="كلمة المرور">
         </div>
         <button type="submit" class="btn btn-success btn-block">دخول</button>
       </fieldset>

@@ -43,8 +43,10 @@ export const firebaseData = {
   },
 
   subjects: {
-    1: {
-      'social-science': 'علوم اجتماعية'
+    'bt-accounting': {
+      1: {
+        'social-science': 'علوم اجتماعية'
+      }
     }
   }
 }

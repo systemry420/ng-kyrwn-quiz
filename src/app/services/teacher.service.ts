@@ -25,15 +25,17 @@ export class TeacherService {
       )
     }
 
+  constructDate(day) {
+    let d = (day + new Date().getTime()).toString()
+    return d
+  }
 
   addQuiz(day, time, duration, level, subject, questions) {
-    let date = new Date()
-    let d = ((date.getMonth() + 1) + '-' + date.getDate() + '-' + date.getFullYear() + date.getTime()).toString()
-
-    return this.fb.collection('exams').doc(level + '/'+ subject + '/'+ day)
+    let date = this.constructDate(day)
+    return this.fb.collection('exams').doc(level + '/'+ subject + '/'+ date)
     .set(
       {
-        'day': day,
+        'day': date,
         'duration': duration,
         'time': time,
         'data': questions

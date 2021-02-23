@@ -26,9 +26,9 @@ export class QuizComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.quizService.currentSubject.subscribe(sub => {
-    //   this.subject = sub
-    // })
+    this.quizService.currentSubject.subscribe(sub => {
+      this.subject = sub
+    })
 
     // this.quizService.currentQuiz.subscribe(quiz => {
     //   this.quizInfo = {
@@ -39,7 +39,7 @@ export class QuizComponent implements OnInit {
     //   this.quizData = quiz.data
     // })
 
-    this.quizInfo = firebaseData.quiz
+    this.quizInfo = firebaseData.exams
 
     this.quizData = this.quizInfo.questions
 

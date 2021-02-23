@@ -21,9 +21,6 @@ export class AuthService {
   constructor(
     @Inject('fbQuiz') private fb: AngularFirestore,
     private http: HttpClient) {
-    this.getUsers().subscribe( data => {
-      this.users = data
-    })
   }
 
   getUsers() {
@@ -50,23 +47,23 @@ export class AuthService {
 
   login(email: string, password: string) {
     let valid: boolean = false
-    // console.log(this.users);
+    this.getUsers().subscribe( data => {
+      this.users = data
 
-    for (let i = 0; i < this.users.length; i++) {
-      const user = this.users[i];
-      // console.log(user.id, user.password, email, password);
-      if(email == user.id && password == user.password){
-        valid = true
-        this.handleAuth(
-          user.id,
-          user.password,
-          user['full-name'],
-          user.level,
-        )
-        break;
+      for (let i = 0; i < this.users.length; i++) {
+        const user = this.users[i];
+        if(email == user.id && password == user.password){
+          valid = true
+          this.handleAuth(
+            user.id,
+            user.password,
+            user['full-name'],
+            user.level,
+          )
+          break;
+        }
       }
-    }
-    return valid
+    })
   }
 
   private handleAuth(id, password, name, level) {

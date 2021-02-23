@@ -23,10 +23,10 @@ export class HomeComponent implements OnInit {
     // this.authService.userSubject.subscribe( user => this.user = user)
     this.user = {
       id: "fn1",
-    password: "fn1",
-    name: "fatema naser",
-    level: "bt1-nursing",
-  }
+      password: "fn1",
+      name: "fatema naser",
+      level: "bt1-nursing",
+    }
 
 
     this.authService.getSubjects(this.user.level)
@@ -36,19 +36,13 @@ export class HomeComponent implements OnInit {
         let arr = Object.keys(data[key]).map(sub=>{
           return {'en': sub, 'ar': data[key][sub]}
         })
-        console.log(arr);
         return arr
       }
     }))
     .subscribe(subjects => {
       this.subjects = subjects
+      console.log(subjects);
     })
-    // .subscribe(subs => this.subs = subs)
-
-    // fetch arabic names
-    // this.subs = Object.keys(this.user.subs).map(sub => {
-    //   return {'name': sub ,'content': this.user.subs[sub]}
-    // })
   }
 
   fetchQuiz(ar, en) {

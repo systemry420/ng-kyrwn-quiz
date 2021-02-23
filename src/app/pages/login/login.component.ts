@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
   email: string; password: string
-  users
+  users; validUser = false
 
   constructor(
     private authService: AuthService,
@@ -20,13 +20,15 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     let valid = this.authService.login(this.email, this.password)
-    if(valid) {
-      this.router.navigate(['home'])
-    }
-    else {
-      console.log('error');
+    this.authService.userSubject.subscribe(user => {
+      if(user) {
+        this.router.navigate(['/home'])
+      }
+      else {
+        console.log('error');
 
-    }
+      }
+    })
   }
 
 }
