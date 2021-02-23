@@ -7,7 +7,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class McqComponent implements OnInit {
   ngOnInit() {}
-  
+
   @Output() nextEvent = new EventEmitter();
 
   data = {
@@ -18,7 +18,12 @@ export class McqComponent implements OnInit {
   }
 
   nextQuestion() {
-    this.nextEvent.emit(this.data);
+    this.nextEvent.emit({
+      q: this.data.question,
+      o1: this.data.option1,
+      o2: this.data.option2,
+      o3: this.data.option3,
+    });
 
     this.data = {
       question: '',

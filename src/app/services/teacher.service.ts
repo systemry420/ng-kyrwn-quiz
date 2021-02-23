@@ -26,11 +26,11 @@ export class TeacherService {
     }
 
 
-  addQuiz(day, time, duration, cls, subject, questions) {
+  addQuiz(day, time, duration, level, subject, questions) {
     let date = new Date()
     let d = ((date.getMonth() + 1) + '-' + date.getDate() + '-' + date.getFullYear() + date.getTime()).toString()
 
-    return this.fb.collection('exams').doc(cls + '/'+ subject + '/'+ day)
+    return this.fb.collection('exams').doc(level + '/'+ subject + '/'+ day)
     .set(
       {
         'day': day,
@@ -38,12 +38,7 @@ export class TeacherService {
         'time': time,
         'data': questions
       }
-    ).then(()=>{
-      console.log("added quiz")
-    })
-    .catch(error => {
-      console.log(error);
-    })
+    )
   }
 
   // getStudent() {

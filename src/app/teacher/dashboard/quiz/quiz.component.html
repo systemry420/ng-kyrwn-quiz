@@ -65,21 +65,21 @@
 
 </main>
 <ng-container class="output">
-  <div *ngFor="let q of output; let i = index" class="question">
+  <div *ngFor="let output of outputs; let i = index" class="question">
     <i
-      class="fa fa-remove"
+      class="fa fa-times"
       style="color: red; padding: 6px; font-size: 1.5em; cursor: pointer;"
       (click)="removeQuestion(i)">
     </i>
 
-    <div *ngIf="q.type == 'mcq' " class="mcq">
-      {{ q.q.question }} <br>
-      {{ q.q.option1 }} <br>
-      {{ q.q.option2 }} <br>
-      {{ q.q.option3 }} <br>
+    <div *ngIf="output.type == 'mcq' " class="mcq">
+      <h5>{{ output.data.question }}</h5>
+      <p>{{ output.data.option1 }}</p>
+      <p>{{ output.data.option2 }}</p>
+      <p>{{ output.data.option3 }}</p>
     </div>
-    <div *ngIf="q.type == 'qa' " class="qa">
-      {{ q.q }}
+    <div *ngIf="output.type == 'qa' " class="qa">
+      <h5>{{ output.data.question }}</h5>
     </div>
   </div>
 </ng-container>

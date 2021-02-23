@@ -16,7 +16,7 @@ export class QuizComponent implements OnInit {
   time = '13:00'
   currentExam = []
   questionType;
-  output = []
+  outputs = []
 
   constructor(
     private router: Router,
@@ -42,34 +42,37 @@ export class QuizComponent implements OnInit {
     }
   }
 
-  addQuestion(ev) {
+  addQuestion(data) {
+    let question
     if(this.questionType == 'mcq') {
-      let question = {'mcq': ev}
-      this.currentExam.push(question)
+      question = {type: 'mcq', data}
     }
     else if(this.questionType == 'qa') {
-      let question = {'qa': ev}
-      this.currentExam.push(question)
+      question = {type: 'qa', data}
     }
-
-    let ob = {
-      type: this.questionType,
-      q: ev
-    }
-    console.log(ob)
-    this.output.push(ob)
+    this.currentExam.push(question)
+    this.outputs.push(question)
   }
 
   removeQuestion(i) {
     this.currentExam.splice(i, 1)
-    this.output.splice(i, 1)
+    this.outputs.splice(i, 1)
   }
 
   submitQuiz() {
-    this.teacherService.addQuiz(this.day, this.time, this.duration, this.level, this.subject, this.currentExam)
-    .then(response=>{
-      console.log(response);
-
+    this.teacherService.addQuiz(
+      this.day,
+      this.time,
+      this.duration,
+      this.level,
+      this.subject,
+      this.currentExam
+    )
+    .then(()=>{
+      console.log("added quiz")
+    })
+    .catch(error => {
+      console.log(error);
     })
   }
 

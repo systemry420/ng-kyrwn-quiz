@@ -15,7 +15,7 @@ export class QaComponent implements OnInit {
 
   nextQuestion() {
     // emit question to parent
-    this.nextEvent.emit(this.question)
+    this.nextEvent.emit({q: this.question})
     this.question = ''
   }
 }
