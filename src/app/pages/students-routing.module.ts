@@ -10,11 +10,11 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'home',
+    path: 'st/home',
     component: HomeComponent
   },
   {
-    path: 'quiz',
+    path: 'st/quiz',
     component: QuizComponent
   }
 ]

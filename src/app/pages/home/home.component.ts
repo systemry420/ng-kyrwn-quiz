@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit {
     this.quizService.fetchQuiz(en, this.user.level)
     .subscribe(quiz =>{
       this.quizService.currentQuiz.next(quiz)
-      this.router.navigate(['quiz'])
+      this.router.navigate(['st/quiz'])
     })
   }
 

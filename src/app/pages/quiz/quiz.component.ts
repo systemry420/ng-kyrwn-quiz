@@ -3,6 +3,7 @@ import { QuizService } from 'src/app/services/quiz.service';
 import { FormArray, FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { EvalService } from 'src/app/services/eval.service';
 import { firebaseData } from './../../../assets/data-model'
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-quiz',
@@ -22,6 +23,7 @@ export class QuizComponent implements OnInit {
   constructor(
     private quizService: QuizService,
     public fb: FormBuilder,
+    private authService: AuthService,
     private evalService: EvalService,
   ) { }
 
@@ -35,13 +37,17 @@ export class QuizComponent implements OnInit {
     //     'day': quiz.day,
     //     'time': quiz.time,
     //     'duration': quiz.duration,
-    //   }
-    //   this.quizData = quiz.data
+    //   // this.quizData = quiz.data
     // })
 
-    this.quizInfo = firebaseData.exams
+    let quiz = firebaseData.exams['bt1-nursing']['health-care']['2021-02-19']
+    this.quizInfo = {
+      'day': quiz.day,
+      'time': quiz.time,
+      'duration': quiz.duration,
+    }
 
-    this.quizData = this.quizInfo.questions
+    this.quizData = quiz.data
 
   }
 
@@ -78,8 +84,11 @@ export class QuizComponent implements OnInit {
   }
 
   onSubmit(form) {
-    console.log(form.value);
+    this.authService.userSubject.subscribe(user => {
+      console.log(user);
 
+      this.evalService.submitAnswers(user.level, user.id, this.subject, form.value)
+    })
   }
 
   finishQuiz() {

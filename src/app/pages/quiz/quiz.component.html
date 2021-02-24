@@ -20,7 +20,7 @@
         <div class="question" *ngFor="let question of quizData; let i = index">
           <ng-container *ngIf="question.type == 'mcq' " [ngModelGroup]="i">
             <dl>
-              <h4>{{question.data.question}}</h4>
+              <h4>{{question.data.q}}</h4>
               <dd>
                 <input
                   value="1"
@@ -28,7 +28,7 @@
                   ngModel
                   type="radio">
                 <label for="a">
-                  {{question.data.option1}}
+                  {{question.data.o1}}
                 </label>
               </dd>
               <dd>
@@ -38,7 +38,7 @@
                  ngModel
                  type="radio">
                 <label for="b">
-                  {{question.data.option2}}
+                  {{question.data.o2}}
                 </label>
               </dd>
               <dd>
@@ -48,14 +48,14 @@
                 ngModel
                 type="radio">
                 <label for="c">
-                  {{question.data.option3}}
+                  {{question.data.o3}}
                 </label>
               </dd>
             </dl>
           </ng-container>
 
           <ng-container *ngIf="question.type == 'qa' " [ngModelGroup]="i">
-            <h4>{{question.data.question}}</h4>
+            <h4>{{question.data.q}}</h4>
             <textarea
             appTextResize
              ngModel

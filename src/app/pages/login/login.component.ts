@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     let valid = this.authService.login(this.email, this.password)
     this.authService.userSubject.subscribe(user => {
       if(user) {
-        this.router.navigate(['/home'])
+        this.router.navigate(['st/home'])
       }
       else {
         console.log('error');

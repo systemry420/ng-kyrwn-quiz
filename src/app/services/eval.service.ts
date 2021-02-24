@@ -10,18 +10,17 @@ export class EvalService {
     @Inject('fbQuiz') private fs: AngularFirestore,
   ) { }
 
-  sendMarks(user, subject, mark, total) {
-    // console.log(user, subject, mark, total);
+  submitAnswers(level, userId, subject, answers) {
+    console.log(answers);
+    let d = new Date()
+    this.fs.collection('submissions')
+    .doc(level + '/' + subject.en + '/stds/' + userId + '/' + d)
+    .set({
+      answers
+    })
+    .then(res => {
+      console.log(res);
 
-    // return new Promise<any>((resolve, reject) => {
-    //   this.fs.collection('eval').doc('user1')
-    //   .update({
-    //     'subjects': {
-    //       'name': subject, 'mark': mark, 'total': total
-    //     }
-    //   }).then(res => {
-    //     resolve(res)
-    //   }, err => reject(err))
-    // })
+    })
   }
 }
