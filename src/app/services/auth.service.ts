@@ -29,6 +29,9 @@ export class AuthService {
   }
 
   getStudentsByLevel(level) {
+    if(level == 'all') {
+      return this.getUsers()
+    }
     return this.fb
     .collection('users', ref => ref.where('level', '==', level))
     .valueChanges()

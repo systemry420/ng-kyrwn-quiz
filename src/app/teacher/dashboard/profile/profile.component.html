@@ -1,1 +1,41 @@
-<p>profile works!</p>
+<app-navbar text="Profile"></app-navbar>
+<main>
+  <ng-container class="container">
+    <form>
+      <div class="form-group col-md-12">
+        <button class="form-control btn btn-primary">Add student</button>
+      </div>
+
+      <div class="form-group col-md-12">
+        <label for="class">إختيار الصف</label>
+        <select (change)="fetchStudentsByLevel()" required name="class" class="form-control" [(ngModel)]="level">
+          <option value="all">- - - </option>
+          <option value="bt1-nursing">bt1-nursing</option>
+          <option value="bt3-nursing">bt3-nursing </option>
+          <option value="bt-accounting">bt-accounting </option>
+        </select>
+      </div>
+    </form>
+  </ng-container>
+
+  <div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Password</th>
+          <th scope="col">Name</th>
+          <th scope="col">Level</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let std of students">
+          <th scope="row">{{std.id}}</th>
+          <td>{{std.password}}</td>
+          <td>{{std.name}}</td>
+          <td>{{std.level}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
