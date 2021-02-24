@@ -8,9 +8,11 @@ import { FormsModule } from "@angular/forms";
 import { McqComponent } from './quiz/mcq/mcq.component';
 import { QaComponent } from './quiz/qa/qa.component';
 import { CorrectionComponent } from './correction/correction.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
+    DashboardComponent,
     QuizComponent,
     ProfileComponent,
     McqComponent,
@@ -20,6 +22,7 @@ import { CorrectionComponent } from './correction/correction.component';
   imports: [
     CommonModule,
     FormsModule,
+    SharedModule,
     RouterModule.forChild([
       {
         path: 'dashboard',

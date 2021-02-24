@@ -24,7 +24,14 @@ export class AuthService {
   }
 
   getUsers() {
-    return this.fb.collection('users').valueChanges()
+    return this.fb.collection('users')
+    .valueChanges()
+  }
+
+  getStudentsByLevel(level) {
+    return this.fb
+    .collection('users', ref => ref.where('level', '==', level))
+    .valueChanges()
   }
 
   getSubjects(level) {

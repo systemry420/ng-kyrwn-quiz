@@ -1,11 +1,13 @@
 import { Inject, Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection  } from '@angular/fire/firestore';
+import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TeacherService {
+  examStudents = new BehaviorSubject(null)
 
   constructor(
     @Inject('fbQuiz') private fb: AngularFirestore,
@@ -16,14 +18,14 @@ export class TeacherService {
     // change this shit bt
     return this.fb.collection("subjects").doc(cls)
     .snapshotChanges()
-      .pipe(
-        map(changes => {
-          return changes.payload.data();
-          // const id = changes.payload.id;
-          // return { data };
-        })
-      )
-    }
+    .pipe(
+      map(changes => {
+        return changes.payload.data();
+        // const id = changes.payload.id;
+        // return { data };
+      })
+    )
+  }
 
   constructDate(day) {
     let d = (day + new Date().getTime()).toString()
@@ -41,6 +43,24 @@ export class TeacherService {
         'data': questions
       }
     )
+  }
+
+  getStudentsIds(level, subject) {
+    console.log(level, subject);
+    let students = []
+
+    this.fb.collection('submissions')
+    .doc(level)
+    .collection(subject)
+    .snapshotChanges()
+    .forEach((actions:any) => {
+      return actions.map(a => {
+        const id = a.payload.doc.id;
+        students.push(id)
+      });
+    });
+
+    this.examStudents.next(students)
   }
 
   // getStudent() {
