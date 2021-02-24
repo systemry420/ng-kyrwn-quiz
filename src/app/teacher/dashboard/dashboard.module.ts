@@ -7,13 +7,15 @@ import { DashboardComponent } from './dashboard.component';
 import { FormsModule } from "@angular/forms";
 import { McqComponent } from './quiz/mcq/mcq.component';
 import { QaComponent } from './quiz/qa/qa.component';
+import { CorrectionComponent } from './correction/correction.component';
 
 @NgModule({
   declarations: [
     QuizComponent,
     ProfileComponent,
     McqComponent,
-    QaComponent
+    QaComponent,
+    CorrectionComponent
   ],
   imports: [
     CommonModule,
@@ -30,6 +32,10 @@ import { QaComponent } from './quiz/qa/qa.component';
       {
         path: 'profile',
         component: ProfileComponent
+      },
+      {
+        path: 'correction',
+        component: CorrectionComponent
       }
     ])
   ],
