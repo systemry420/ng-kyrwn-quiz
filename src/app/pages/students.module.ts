@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { TextareaAutoresizeDirective } from './quiz/textarea-autoresize.directive';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     HomeComponent,
     LoginComponent,
-    QuizComponent
+    QuizComponent,
+    TextareaAutoresizeDirective
   ]
 })
 

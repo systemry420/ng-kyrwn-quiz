@@ -16,7 +16,7 @@ export class QuizComponent implements OnInit {
   currentQuestion = 0
   question; answer; score = 0; total; counter
   disabled = true
-  finish: boolean
+  finish: boolean = false
   subject; time; end; data
   minutes = 0; seconds = 0
   quizInfo; quizData
@@ -32,22 +32,22 @@ export class QuizComponent implements OnInit {
       this.subject = sub
     })
 
-    // this.quizService.currentQuiz.subscribe(quiz => {
-    //   this.quizInfo = {
-    //     'day': quiz.day,
-    //     'time': quiz.time,
-    //     'duration': quiz.duration,
-    //   // this.quizData = quiz.data
-    // })
+    this.quizService.currentQuiz.subscribe(quiz => {
+      this.quizInfo = {
+        'day': quiz.day,
+        'time': quiz.time,
+        'duration': quiz.duration,
+      }
+      // this.quizData = quiz.data
+    })
+    // let quiz = firebaseData.exams['bt1-nursing']['health-care']['2021-02-19']
+    // this.quizInfo = {
+    //   'day': quiz.day,
+    //   'time': quiz.time,
+    //   'duration': quiz.duration,
+    // }
 
-    let quiz = firebaseData.exams['bt1-nursing']['health-care']['2021-02-19']
-    this.quizInfo = {
-      'day': quiz.day,
-      'time': quiz.time,
-      'duration': quiz.duration,
-    }
-
-    this.quizData = quiz.data
+    // this.quizData = quiz.data
 
   }
 
@@ -56,12 +56,11 @@ export class QuizComponent implements OnInit {
   startQuiz() {
     console.log(this.quizData);
 
-    // this.quizService.currentQuiz.subscribe(data => {
-    //   this.quizData = data.data
-    //   console.log(data);
-
-    // })
-    // this.startTimer(1)
+    this.quizService.currentQuiz.subscribe(data => {
+      this.quizData = data.data
+      console.log(data);
+      this.startTimer(0.5)
+    })
   }
 
   startTimer(min) {
@@ -85,16 +84,14 @@ export class QuizComponent implements OnInit {
 
   onSubmit(form) {
     this.authService.userSubject.subscribe(user => {
-      console.log(user);
-
       this.evalService.submitAnswers(user.level, user.id, this.subject, form.value)
     })
   }
 
-  finishQuiz() {
-    // let user = this.userService.getCurrentUser()
-    // let subject = this.quizService.currentSubject.name
-    // this.evalService.sendMarks(user, subject, this.score, this.total)
-  }
+  // finishQuiz() {
+  //   let user = this.userService.getCurrentUser()
+  //   let subject = this.quizService.currentSubject.name
+  //   this.evalService.sendMarks(user, subject, this.score, this.total)
+  // }
 
 }

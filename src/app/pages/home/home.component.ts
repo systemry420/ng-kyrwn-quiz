@@ -49,9 +49,15 @@ export class HomeComponent implements OnInit {
     this.quizService.currentSubject.next({ar, en})
     this.quizService.fetchQuiz(en, this.user.level)
     .subscribe(quiz =>{
-      this.quizService.currentQuiz.next(quiz)
-      this.router.navigate(['st/quiz'])
-    })
+      if(quiz) {
+        this.quizService.currentQuiz.next(quiz)
+        this.router.navigate(['st/quiz'])
+      }
+    },
+      () => {
+        console.log('no exam');
+      }
+    )
   }
 
 }

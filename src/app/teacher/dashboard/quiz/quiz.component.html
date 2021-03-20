@@ -15,7 +15,7 @@
 
       <div class="form-group col-md-12">
         <label for="class">إختيار الصف</label>
-        <select required name="class" class="form-control" [(ngModel)]="clas" (change)="getSubjects($event)">
+        <select required name="class" class="form-control" [(ngModel)]="level" (change)="getSubjects($event)">
           <option value="-">- - - </option>
           <option value="bt3-nursing">bt3-nursing </option>
           <option value="bt1-nursing">bt1-nurse</option>
@@ -34,7 +34,7 @@
         <input min="10" max="120" required type="number" class="form-control" [(ngModel)]="duration" name="question" placeholder="المدة" autocomplete="off">
       </div>
       <div class="form-group col-md-12">
-        <button (click)="next()" class="btn btn-primary btn-block">التالي</button>
+        <button [disabled]="!level || !subject" (click)="next()" class="btn btn-primary btn-block">التالي</button>
       </div>
     </form>
   </ng-container>
@@ -50,7 +50,7 @@
         </select>
       </div>
       <div class="buttons">
-        <button id="submit" class="btn btn-danger" (click)="submitQuiz()">حفظ الإختبار</button>
+        <button [disabled]="currentExam.length == 0" id="submit" class="btn btn-danger" (click)="submitQuiz()">حفظ الإختبار</button>
       </div>
     </form>
   </ng-container>
@@ -74,13 +74,13 @@
     </i>
 
     <div *ngIf="output.type == 'mcq' " class="mcq">
-      <h5>{{ output.data.question }}</h5>
-      <p>{{ output.data.option1 }}</p>
-      <p>{{ output.data.option2 }}</p>
-      <p>{{ output.data.option3 }}</p>
+      <h5>{{ output.data.q }}</h5>
+      <p>{{ output.data.o1 }}</p>
+      <p>{{ output.data.o2 }}</p>
+      <p>{{ output.data.o3 }}</p>
     </div>
     <div *ngIf="output.type == 'qa' " class="qa">
-      <h5>{{ output.data.question }}</h5>
+      <h5>{{ output.data.q }}</h5>
     </div>
   </div>
 </ng-container>

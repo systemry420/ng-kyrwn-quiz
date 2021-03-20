@@ -32,7 +32,6 @@ import { SharedModule } from './shared/shared.module';
     // NavbarComponent,
     // CardComponent,
     // QuizComponent,
-    TextareaAutoresizeDirective
   ],
   imports: [
     BrowserModule,

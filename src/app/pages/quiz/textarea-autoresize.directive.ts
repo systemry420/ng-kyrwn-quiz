@@ -12,13 +12,13 @@ export class TextareaAutoresizeDirective {
     this.resize()
   }
 
-  ngOnInit() {
-    if(this.elementRef.nativeElement.scrollHeight) {
-      setTimeout(() => {
-        return this.resize()
-      });
-    }
-  }
+  // ngOnInit() {
+  //   if(this.elementRef.nativeElement.scrollHeight) {
+  //     setTimeout(() => {
+  //       return this.resize()
+  //     });
+  //   }
+  // }
 
   resize() {
     this.elementRef.nativeElement.style.height = '0';

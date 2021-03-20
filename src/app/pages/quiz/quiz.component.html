@@ -1,6 +1,6 @@
 <app-navbar [text]="subject.ar"></app-navbar>
 
-<ng-container *ngIf="!finish && !quizData" style="margin: 1em 0;">
+<div [hidden]="quizData" *ngIf="!finish && quizInfo" style="margin: 1em 0;">
   <div class="container"  style="margin: 1em 0;">
     <div class="info">
       <h4>Day: {{ quizInfo.day}} </h4>
@@ -9,71 +9,72 @@
     </div>
     <button class="btn btn-primary btn-block" (click)="startQuiz()">Start Quiz</button>
   </div>
-</ng-container>
+</div>
 
-<div *ngIf="!finish && quizData" class="container">
+<div *ngIf="quizData" class="container">
       <div class="container time">
         <h4>الوقت {{00+":"+ minutes+":"+ seconds}}</h4>
       </div>
 
       <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-        <div class="question" *ngFor="let question of quizData; let i = index">
-          <ng-container *ngIf="question.type == 'mcq' " [ngModelGroup]="i">
-            <dl>
-              <h4>{{question.data.q}}</h4>
-              <dd>
-                <input
-                  value="1"
+        <div [hidden]="finish">
+          <div class="question" *ngFor="let question of quizData; let i = index">
+            <ng-container *ngIf="question.type == 'mcq' " [ngModelGroup]="i">
+              <dl>
+                <h4>{{question.data.q}}</h4>
+                <dd>
+                  <input
+                    value="1"
+                    name="answer"
+                    ngModel
+                    type="radio">
+                  <label for="a">
+                    {{question.data.o1}}
+                  </label>
+                </dd>
+                <dd>
+                  <input
+                   value="2"
+                   name="answer"
+                   ngModel
+                   type="radio">
+                  <label for="b">
+                    {{question.data.o2}}
+                  </label>
+                </dd>
+                <dd>
+                  <input
+                  value="3"
                   name="answer"
                   ngModel
                   type="radio">
-                <label for="a">
-                  {{question.data.o1}}
-                </label>
-              </dd>
-              <dd>
-                <input
-                 value="2"
-                 name="answer"
-                 ngModel
-                 type="radio">
-                <label for="b">
-                  {{question.data.o2}}
-                </label>
-              </dd>
-              <dd>
-                <input
-                value="3"
-                name="answer"
-                ngModel
-                type="radio">
-                <label for="c">
-                  {{question.data.o3}}
-                </label>
-              </dd>
-            </dl>
-          </ng-container>
+                  <label for="c">
+                    {{question.data.o3}}
+                  </label>
+                </dd>
+              </dl>
+            </ng-container>
 
-          <ng-container *ngIf="question.type == 'qa' " [ngModelGroup]="i">
-            <h4>{{question.data.q}}</h4>
-            <textarea
-            appTextResize
-             ngModel
-             value=""
-             name="answer">
-            </textarea>
-
-          </ng-container>
-
+            <ng-container *ngIf="question.type == 'qa' " [ngModelGroup]="i">
+              <h4>{{question.data.q}}</h4>
+              <textarea
+              appTextResize
+               ngModel
+               autocomplete="off"
+               name="answer">
+              </textarea>
+            </ng-container>
+          </div>
+          <button id="next" type="submit">Submit</button>
         </div>
-        <button id="next">Submit</button>
+
+        <ng-container *ngIf="finish">
+          <div class="container"  style="margin: 1em 0;">
+            <h1>نهاية الامتحان</h1>
+            <h3 *ngIf="minutes == 0 && seconds == 0">انتهى الوقت</h3>
+            <button class="btn btn-block btn-danger" (click)="onSubmit(f)">إضغط لإرسال أجوبتك</button>
+          </div>
+        </ng-container>
       </form>
     </div>
 
-<ng-container *ngIf="finish">
-  <div class="container"  style="margin: 1em 0;">
-    <h1>نهاية الامتحان</h1>
-    <h3 *ngIf="minutes == 0 && seconds == 0">انتهى الوقت</h3>
-    <button class="btn btn-block btn-danger" (click)="finishQuiz()">إضغط لإرسال أجوبتك</button>
-  </div>
-</ng-container>

@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { BehaviorSubject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -15,22 +15,21 @@ export class QuizService {
   ) { }
 
   fetchQuiz(sub, level) {
-    let date = new Date(2021, 1, 19)
+    let date = new Date(2021, 3, 1)
     console.log(date.toString());
     let d = this.constructDate(date)
-    console.log(d);
+    console.log(level, sub, d);
 
     return this.fb.collection('exams').doc(level + '/' + sub + '/' + d)
     .valueChanges()
     // .pipe(
-      //   map(changes => {
-        //     const data = changes.payload.data();
-        //     const id = changes.payload.id;
-        //     console.log(id, data);
-
-        //   })
-        // )
-      }
+    //     tap((changes:any) => {
+    //         // const data = changes.payload.data();
+    //         const id = changes.payload.id;
+    //         console.log(id);
+    //       })
+    //     )
+  }
 
   constructDate(date) {
     let m = date.getMonth() + 1
