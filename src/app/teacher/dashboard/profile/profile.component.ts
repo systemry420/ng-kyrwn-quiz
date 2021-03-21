@@ -7,7 +7,13 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  level; students
+  level; students = []
+  isAdding = false
+  addForm = {
+    level: '',
+    name: '',
+    id: ''
+  }
   constructor(
     private authService: AuthService
   ) { }
@@ -27,6 +33,12 @@ export class ProfileComponent implements OnInit {
     this.authService.getStudentsByLevel(this.level).subscribe(users => {
       this.students = users
     })
+  }
+
+  addStudent(form) {
+    this.authService.addStudent(form.value, this.students.length)
+    this.addForm.name = ''
+    this.addForm.id = ''
   }
 
 

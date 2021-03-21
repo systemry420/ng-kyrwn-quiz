@@ -8,7 +8,7 @@ import { ProfileComponent } from './dashboard/profile/profile.component'
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'dashboard/profile',
     pathMatch: 'full'
   },
   {

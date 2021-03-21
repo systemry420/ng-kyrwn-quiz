@@ -13,7 +13,7 @@
 
 <div *ngIf="quizData" class="container">
       <div class="container time">
-        <h4>الوقت {{00+":"+ minutes+":"+ seconds}}</h4>
+        <h4>الوقت {{"00:"+ (minutes<10? '0'+ minutes: minutes) +":"+ (seconds<10? '0'+seconds: seconds)}}</h4>
       </div>
 
       <form (ngSubmit)="onSubmit(f)" #f="ngForm">

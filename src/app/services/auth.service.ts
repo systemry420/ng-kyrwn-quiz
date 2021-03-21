@@ -17,6 +17,7 @@ interface UserToken {
 export class AuthService {
   users
   userSubject = new BehaviorSubject<UserToken>(null)
+  usersSubject = new BehaviorSubject<any[]>(null)
 
   constructor(
     @Inject('fbQuiz') private fb: AngularFirestore,
@@ -24,8 +25,9 @@ export class AuthService {
   }
 
   getUsers() {
-    return this.fb.collection('users')
-    .valueChanges()
+    this.fb.collection('users').valueChanges()
+      .subscribe(users => this.usersSubject.next(users))
+    return this.fb.collection('users').valueChanges()
   }
 
   getStudentsByLevel(level) {
@@ -73,6 +75,15 @@ export class AuthService {
           break;
         }
       }
+    })
+  }
+
+  addStudent(std, length) {
+    this.fb.collection('users').doc(std.id).set({
+      name: std.name,
+      level: std.level,
+      id: std.id + (length + 1),
+      password: std.id + (length + 1)
     })
   }
 

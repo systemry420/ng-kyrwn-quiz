@@ -1,19 +1,19 @@
 <app-navbar text="وضع امتحان"></app-navbar>
 
 <main>
-  <ng-container *ngIf="!step1"> <!--  -->
+  <div class="container" *ngIf="!step1"> <!--  -->
     <form>
-      <div class="form-group col-md-12">
+      <div class="form-group col-md-8 col-sm-12">
         <label for="level">اليوم</label>
         <input (change)="log()" type="date" name="day" [(ngModel)]="day" class="form-control" />
       </div>
 
-      <div class="form-group col-md-12">
+      <div class="form-group col-md-8">
         <label for="level">الساعة</label>
         <input type="time" name="time" value="8:00" [(ngModel)]="time" class="form-control" />
       </div>
 
-      <div class="form-group col-md-12">
+      <div class="form-group col-md-8">
         <label for="class">إختيار الصف</label>
         <select required name="class" class="form-control" [(ngModel)]="level" (change)="getSubjects($event)">
           <option value="-">- - - </option>
@@ -23,21 +23,21 @@
         </select>
       </div>
 
-      <div class="form-group col-md-12">
+      <div class="form-group col-md-8">
         <label for="subject">إختيار المادة</label>
         <select required name="subject" class="form-control" [(ngModel)]="subject">
           <option *ngFor="let sub of subsNames" [value]="sub.key">{{sub.value}}</option>
         </select>
       </div>
-      <div class="form-group col-md-12">
+      <div class="form-group col-md-8">
         <label for="subject">(بالدقيقة) تحديد المدة</label>
-        <input min="10" max="120" required type="number" class="form-control" [(ngModel)]="duration" name="question" placeholder="المدة" autocomplete="off">
+        <input min="10" max="60" required type="number" class="form-control" [(ngModel)]="duration" name="question" placeholder="المدة" autocomplete="off">
       </div>
-      <div class="form-group col-md-12">
+      <div class="form-group col-md-8">
         <button [disabled]="!level || !subject" (click)="next()" class="btn btn-primary btn-block">التالي</button>
       </div>
     </form>
-  </ng-container>
+  </div>
 
   <ng-container *ngIf="step1"> <!--   -->
     <form>

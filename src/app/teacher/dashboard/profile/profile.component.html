@@ -3,7 +3,29 @@
   <ng-container class="container">
     <form>
       <div class="form-group col-md-12">
-        <button class="form-control btn btn-primary">Add student</button>
+        <button class="form-control btn btn-primary" (click)="isAdding = true">Add new student</button>
+        <div class="container" style="margin: 1em;">
+          <form #f="ngForm" (ngSubmit)="addStudent(f)">
+            <div class="form-group row">
+              <label for="level" class="col-3">إختيار الصف</label>
+              <select [(ngModel)]="addForm.level" required name="level" class="form-control col-8">
+                <option value="all">- - - </option>
+                <option value="bt1-nursing">bt1-nursing</option>
+                <option value="bt3-nursing">bt3-nursing </option>
+                <option value="bt-accounting">bt-accounting </option>
+              </select>
+            </div>
+            <div class="form-group row">
+              <label for="name" class="col-3">الاسم</label>
+              <input [(ngModel)]="addForm.name" name="name" type="text" id="name" class="form-control col-8" autocomplete="off">
+            </div>
+            <div class="form-group row">
+              <label for="id" class="col-3">ID</label>
+              <input [(ngModel)]="addForm.id" name="id" type="text" id="id" class="form-control col-8" autocomplete="off">
+            </div>
+            <button class="btn btn-warning btn-block">Add</button>
+          </form>
+        </div>
       </div>
 
       <div class="form-group col-md-12">
@@ -18,11 +40,11 @@
     </form>
   </ng-container>
 
-  <div>
+  <div class="container">
     <table class="table table-striped">
       <thead>
         <tr>
-          <th scope="col">#</th>
+          <th scope="col">#{{ students?.length }}</th>
           <th scope="col">Password</th>
           <th scope="col">Name</th>
           <th scope="col">Level</th>
