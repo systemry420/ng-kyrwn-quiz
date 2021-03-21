@@ -41,5 +41,10 @@ export class ProfileComponent implements OnInit {
     this.addForm.id = ''
   }
 
+  deleteStudent(std) {
+    if(confirm('Delete: ' + std.name))
+      this.authService.deleteStudent(std)
+  }
+
 
 }

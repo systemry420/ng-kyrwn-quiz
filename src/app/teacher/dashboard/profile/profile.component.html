@@ -48,6 +48,7 @@
           <th scope="col">Password</th>
           <th scope="col">Name</th>
           <th scope="col">Level</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -56,6 +57,7 @@
           <td>{{std.password}}</td>
           <td>{{std.name}}</td>
           <td>{{std.level}}</td>
+          <td><button class="btn" (click)="deleteStudent(std)">Delete</button></td>
         </tr>
       </tbody>
     </table>

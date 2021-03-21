@@ -79,12 +79,19 @@ export class AuthService {
   }
 
   addStudent(std, length) {
-    this.fb.collection('users').doc(std.id).set({
+    let id = std.id + (length + 1)
+    this.fb.collection('users').doc(id).set({
       name: std.name,
       level: std.level,
-      id: std.id + (length + 1),
-      password: std.id + (length + 1)
+      id: id,
+      password: id
     })
+  }
+
+  deleteStudent(std) {
+    console.log(std);
+
+    return this.fb.collection('users').doc(std.id).delete()
   }
 
   private handleAuth(id, password, name, level) {
