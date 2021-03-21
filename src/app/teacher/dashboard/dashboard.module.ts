@@ -9,6 +9,7 @@ import { McqComponent } from './quiz/mcq/mcq.component';
 import { QaComponent } from './quiz/qa/qa.component';
 import { CorrectionComponent } from './correction/correction.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { StudentComponent } from './correction/student/student.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     ProfileComponent,
     McqComponent,
     QaComponent,
-    CorrectionComponent
+    CorrectionComponent,
+    StudentComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +40,11 @@ import { SharedModule } from 'src/app/shared/shared.module';
       },
       {
         path: 'correction',
-        component: CorrectionComponent
+        component: CorrectionComponent,
+      },
+      {
+        path: 'correction/student/:id/:subject',
+        component: StudentComponent
       }
     ])
   ],

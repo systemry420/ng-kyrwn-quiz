@@ -25,9 +25,11 @@ export class AuthService {
   }
 
   getUsers() {
-    this.fb.collection('users').valueChanges()
-      .subscribe(users => this.usersSubject.next(users))
     return this.fb.collection('users').valueChanges()
+  }
+
+  getUser(user) {
+    return this.fb.collection('users').doc(user).valueChanges()
   }
 
   getStudentsByLevel(level) {

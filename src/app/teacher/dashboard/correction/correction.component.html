@@ -14,13 +14,9 @@
 
       <div class="form-group col-md-12">
         <label for="subject">إختيار المادة</label>
-        <select required name="subject" class="form-control" [(ngModel)]="subject">
+        <select required name="subject" class="form-control" [(ngModel)]="subject" (change)="getStudents()">
           <option *ngFor="let sub of subsNames" [value]="sub.key">{{sub.value}}</option>
         </select>
-      </div>
-
-      <div class="form-group col-md-12">
-        <button (click)="getExam()" class="form-control btn btn-primary">Next</button>
       </div>
     </form>
   </ng-container>
@@ -35,7 +31,9 @@
       </thead>
       <tbody>
         <tr *ngFor="let std of students">
-          <th scope="row">{{std.id}}</th>
+          <th scope="row">
+            <a [routerLink]="['student', std.id, subject]">{{std.id}}</a>
+          </th>
           <td>{{std.name}}</td>
         </tr>
       </tbody>

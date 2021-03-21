@@ -11,14 +11,15 @@ export class CorrectionComponent implements OnInit {
   constructor(
     private teacherService: TeacherService,
     private authService: AuthService
-  ) { }
+    ) { }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+    }
 
-  subsNames
-  subject
-  level
+    subsNames
+    subject
+    level
+    studentIds; students
 
 
   getSubjects(ev) {
@@ -34,18 +35,10 @@ export class CorrectionComponent implements OnInit {
     })
   }
 
-  studentIds; students
-  getExam() {
-    if(this.subject && this.level) {
-      // fetch stds
-      // this.teacherService.getStudentsIds(this.level, this.subject)
-      // this.teacherService.examStudents.subscribe(ids => this.studentIds = ids)
-
-      this.authService.getStudentsByLevel(this.level).subscribe(users => {
-        this.students = users
-
-      })
-    }
+  getStudents() {
+    this.authService.getStudentsByLevel(this.level).subscribe(users => {
+      this.students = users
+    })
   }
 
 }

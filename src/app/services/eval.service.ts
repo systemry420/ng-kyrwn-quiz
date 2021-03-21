@@ -1,5 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class EvalService {
     this.fs.collection('submissions')
     .doc(level + '/' + subject.en + '/stds/' + userId + '/' + d)
     .set({
-      answers
+      answers: answers,
+      date: d
     })
     .then(res => {
       console.log(res);
@@ -36,6 +38,13 @@ export class EvalService {
      ).toString()
 
      return examDay
+  }
 
+  getSubmissions(level, subject, stdId) {
+    return this.fs.collection('submissions')
+    .doc(level).collection(subject).doc('stds').collection(stdId)
+    .valueChanges()
   }
 }
+
+
