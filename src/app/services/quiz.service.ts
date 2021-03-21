@@ -43,11 +43,13 @@ export class QuizService {
      ).toString()
 
      return examDay
-
   }
 
-  getQuiz(name) {
-    // return this.quiz
-    return this.fb.collection(name)
+  getQuiz(level, sub, date) {
+    date = this.constructDate(new Date(2021, 3, 1))
+    console.log(date);
+
+    return this.fb.collection('exams').doc(level + '/' + sub + '/' + date)
+    .valueChanges()
   }
 }

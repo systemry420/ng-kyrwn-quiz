@@ -2,18 +2,27 @@
 <div class="container">
 <h2>{{ student?.name }}</h2>
 
-  <div class="card" *ngFor="let sub of submissions; let i = index">
+  <div class="card" *ngFor="let sub of submissions; let i = index" style="margin: 1em 0; background-color: transparent;">
     <div class="card-header" [id]="i">
-      <h2 class="mb-0">
-        <button class="btn btn-link" type="button">
+      <h2>
+        <button class="btn btn-link" type="button" (click)="showCorrectionForm(sub.date, i)">
           {{ sub.date }}
         </button>
       </h2>
     </div>
 
-    <div [id]="i" *ngIf="showForm">
+    <div [id]="i" *ngIf="showForm === i">
       <div class="card-body">
-        {{ sub.answers | json}}
+        <form>
+            <div *ngFor="let data of formData; let j = index"
+            style="margin-bottom: 2em;">
+              <h4 class="jumb">السؤال: {{data.question}}</h4>
+              <h6 class="jumb"
+              style="color: #888; background-color: #eee;">الجواب: {{data.answer}}</h6>
+              <input type="number" class="form-control">
+            </div>
+            <button class="btn btn-primary btn-block">Submit</button>
+        </form>
       </div>
     </div>
   </div>
