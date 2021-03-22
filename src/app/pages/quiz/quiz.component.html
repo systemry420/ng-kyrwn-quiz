@@ -21,11 +21,11 @@
           <div class="question" *ngFor="let question of quizData; let i = index">
             <ng-container *ngIf="question.type == 'mcq' " [ngModelGroup]="i">
               <dl>
-                <h4>{{question.data.q}}</h4>
+                <h4 class="jumb">{{question.data.q}}</h4>
                 <dd>
                   <input
                     value="1"
-                    name="answer"
+                    name="{{i}}"
                     ngModel
                     type="radio">
                   <label for="a">
@@ -35,7 +35,7 @@
                 <dd>
                   <input
                    value="2"
-                   name="answer"
+                   name="{{i}}"
                    ngModel
                    type="radio">
                   <label for="b">
@@ -45,7 +45,7 @@
                 <dd>
                   <input
                   value="3"
-                  name="answer"
+                  name="{{i}}"
                   ngModel
                   type="radio">
                   <label for="c">
@@ -56,12 +56,12 @@
             </ng-container>
 
             <ng-container *ngIf="question.type == 'qa' " [ngModelGroup]="i">
-              <h4>{{question.data.q}}</h4>
+              <h4 class="jumb">{{question.data.q}}</h4>
               <textarea
               appTextResize
                ngModel
                autocomplete="off"
-               name="answer">
+               name="{{i}}">
               </textarea>
             </ng-container>
           </div>

@@ -15,7 +15,7 @@ export class QuizService {
   ) { }
 
   fetchQuiz(sub, level) {
-    let date = new Date(2021, 3, 1)
+    let date = new Date()
     console.log(date.toString());
     let d = this.constructDate(date)
     console.log(level, sub, d);
@@ -46,7 +46,7 @@ export class QuizService {
   }
 
   getQuiz(level, sub, date) {
-    date = this.constructDate(new Date(2021, 3, 1))
+    date = this.constructDate(new Date(date))
     console.log(date);
 
     return this.fb.collection('exams').doc(level + '/' + sub + '/' + date)

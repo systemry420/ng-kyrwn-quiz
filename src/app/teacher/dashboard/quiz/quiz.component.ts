@@ -64,6 +64,7 @@ export class QuizComponent implements OnInit {
   }
 
   submitQuiz() {
+    // add success feedback + redirect
     this.teacherService.addQuiz(
       this.day,
       this.time,

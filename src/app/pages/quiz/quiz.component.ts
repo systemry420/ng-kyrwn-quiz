@@ -59,7 +59,7 @@ export class QuizComponent implements OnInit {
     this.quizService.currentQuiz.subscribe(data => {
       this.quizData = data.data
       console.log(data);
-      this.startTimer(0.5)
+      this.startTimer(this.quizInfo.duration)
     })
   }
 
@@ -83,9 +83,13 @@ export class QuizComponent implements OnInit {
   }
 
   onSubmit(form) {
+    console.log(form.value);
+
     this.authService.userSubject.subscribe(user => {
       this.evalService.submitAnswers(user.level, user.id, this.subject, form.value)
     })
+
+    // redirect
   }
 
   // finishQuiz() {

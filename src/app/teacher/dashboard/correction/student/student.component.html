@@ -1,5 +1,5 @@
-<app-navbar [text]="subject"></app-navbar>
-<div class="container">
+<!-- <app-navbar [text]="subject"></app-navbar> -->
+<div class="container"  *ngIf="submissions">
 <h2>{{ student?.name }}</h2>
 
   <div class="card" *ngFor="let sub of submissions; let i = index" style="margin: 1em 0; background-color: transparent;">
@@ -16,9 +16,9 @@
         <form>
             <div *ngFor="let data of formData; let j = index"
             style="margin-bottom: 2em;">
-              <h4 class="jumb">السؤال: {{data.question}}</h4>
+              <h5 class="jumb">{{data.question}}</h5>
               <h6 class="jumb"
-              style="color: #888; background-color: #eee;">الجواب: {{data.answer}}</h6>
+              style="color: #888; background-color: #eee;">{{data.answer}}</h6>
               <input type="number" class="form-control">
             </div>
             <button class="btn btn-primary btn-block">Submit</button>

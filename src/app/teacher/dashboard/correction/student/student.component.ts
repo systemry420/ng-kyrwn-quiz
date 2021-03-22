@@ -40,7 +40,6 @@ export class StudentComponent implements OnInit {
       switchMap(() => this.getSubmissions()),
       map(subs => {
         this.submissions = subs
-        this.submissionsSubject.next(subs)
       })
     ).subscribe()
   }
@@ -60,6 +59,7 @@ export class StudentComponent implements OnInit {
   constuctExamFrom(date) {
     this.formData = []
     let quiz = this.currentQuiz
+
     let submissions = this.submissions.filter(sub => {
       if(sub.date == date) {
         return sub['answers']
@@ -73,13 +73,13 @@ export class StudentComponent implements OnInit {
         this.formData.push({
           'type': 'mcq',
           'question': question['data']['q'],
-          'answer': question['data']['o'+ answers[index]['answer']]
+          'answer': question['data']['o'+ answers[index][index]]
         })
       } else {
         this.formData.push({
           'type': 'qa',
           'question': question['data']['q'],
-          'answer': answers[index]['answer']
+          'answer': answers[index][index]
         })
       }
     })
