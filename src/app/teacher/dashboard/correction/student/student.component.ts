@@ -48,20 +48,20 @@ export class StudentComponent implements OnInit {
     return this.evalService.getSubmissions(this.student?.level, this.subject, this.student?.id)
   }
 
-  getQuiz(date) {
-    this.quizService.getQuiz(this.student?.level, this.subject, date)
+  getQuiz() {
+    this.quizService.getQuiz(this.student?.level, this.subject, this.date)
     .subscribe((quiz:any) => {
       this.currentQuiz = quiz.data
-      this.constuctExamFrom(date)
+      this.constuctExamFrom()
     })
   }
 
-  constuctExamFrom(date) {
+  constuctExamFrom() {
     this.formData = []
     let quiz = this.currentQuiz
 
     let submissions = this.submissions.filter(sub => {
-      if(sub.date == date) {
+      if(sub.date == this.date) {
         return sub['answers']
       }
     })
@@ -84,10 +84,23 @@ export class StudentComponent implements OnInit {
       }
     })
   }
-
+  date
   showCorrectionForm(date, index) {
     this.showForm = index
-    this.getQuiz(date)
+    this.date = date
+    this.getQuiz()
+  }
+
+  submitMark(form) {
+    let values = form.value
+    console.log(values);
+
+    let sum = 0
+    values = Object.keys(values).forEach((val, i) => {
+      sum += +values[i]
+    })
+
+    this.evalService.submitMark(this.student.level, this.subject, this.student.id, sum, this.date)
   }
 
 }

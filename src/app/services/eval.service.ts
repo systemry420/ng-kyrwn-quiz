@@ -45,6 +45,16 @@ export class EvalService {
     .doc(level).collection(subject).doc('stds').collection(stdId)
     .valueChanges()
   }
+
+  submitMark(level, subject, userId, mark, date) {
+    console.log(mark, date);
+    this.fs.collection('evaluation')
+      .doc(`${level}/${subject}/stds/${userId}/${date}/`)
+        .set({
+          mark,
+          date
+        })
+  }
 }
 
 
